@@ -1,0 +1,29 @@
+.nav-wrapper{
+    background-color: #224099;
+}
+
+.input-field{
+    color: white;
+}
+
+input[type="search"] {
+  height: 64px !important; /* or height of nav */
+}
+
+input[type="search"]:hover {
+    cursor: pointer;
+}
+
+input[type="search"]:focus { 
+    background-color:black;
+    color: white;
+}
+
+input:-webkit-autofill{
+    background-color:black;
+    color: white;
+}
+
+input{
+    border-radius: 2rem;
+}
