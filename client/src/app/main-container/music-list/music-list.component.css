@@ -1,0 +1,22 @@
+.music-list{
+
+    height: 700px;
+    margin-top: 20px;
+}
+
+.tabs.tabs-fixed-width{
+    background-color: transparent;
+}
+
+.tabs .tab a{
+    color: white;
+}
+
+.tabs .indicator {
+    background-color:#1ed760 !important;
+} 
+
+
+/*.tabs.indicator {
+	background-color:#009BAD !important;
+}*/

@@ -5,11 +5,17 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './partials/header/header.component';
+import { MainContainerComponent } from './main-container/main-container.component';
+import { SidebarComponent } from './main-container/sidebar/sidebar.component';
+import { MusicListComponent } from './main-container/music-list/music-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    MainContainerComponent,
+    SidebarComponent,
+    MusicListComponent
   ],
   imports: [
     BrowserModule,
