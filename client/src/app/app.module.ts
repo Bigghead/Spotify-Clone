@@ -15,6 +15,7 @@ import { MainContainerComponent } from './main-container/main-container.componen
 import { SidebarComponent } from './main-container/sidebar/sidebar.component';
 import { MusicListComponent } from './main-container/music-list/music-list.component';
 import { CallbackComponent } from './callback/callback.component';
+import { FeaturedComponent } from './main-container/music-list/featured/featured.component';
 
 
 
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     SidebarComponent,
     MusicListComponent,
     CallbackComponent,
-    NewReleasesComponent
+    NewReleasesComponent,
+    FeaturedComponent
   ],
   imports: [
     BrowserModule,
