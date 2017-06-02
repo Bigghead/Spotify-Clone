@@ -19,11 +19,22 @@ export class SpotData{
 
     getNewReleases(){
 
-       return this.http.get('https://api.spotify.com/v1/browse/new-releases', this.header)
+        return this.http.get('https://api.spotify.com/v1/browse/new-releases', this.header)
                  .map(res => res.json())
                  .catch(err => {
                      console.log(err);
                     return Observable.throw(err);
                  })
+    }
+
+    getFeatured(){
+        
+        return this.http.get('https://api.spotify.com/v1/browse/featured-playlists', this.header)
+                 .map(res => res.json())
+                 .catch(err => {
+                     console.log(err);
+                    return Observable.throw(err);
+                 })
+                 
     }
 }

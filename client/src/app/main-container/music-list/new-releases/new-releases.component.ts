@@ -1,0 +1,41 @@
+import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
+import { SpotData } from '../../../Services/spotifyData.service';
+import { AuthService } from './../../../Services/authentication.service';
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-new-releases',
+  templateUrl: './new-releases.component.html',
+  styleUrls: ['./new-releases.component.css']
+})
+export class NewReleasesComponent implements OnInit {
+
+  constructor(private authService: AuthService, 
+              private spotData: SpotData, 
+              private http: Http) { }
+
+   hasLoggedIn: boolean = false;
+   albums :any[];
+   header = this.spotData.header
+
+
+  ngOnInit() {
+
+    this.authService.hasLoggedIn
+                    .subscribe(
+
+                      res => {
+                        console.log(res);
+                        this.hasLoggedIn = res;
+
+                        this.spotData.getNewReleases()
+                            .subscribe(res => {
+                              this.albums = res.albums.items;
+                            })
+                                     
+                      })
+
+  }
+
+}

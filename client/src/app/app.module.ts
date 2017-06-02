@@ -1,3 +1,4 @@
+import { NewReleasesComponent } from './main-container/music-list/new-releases/new-releases.component';
 import { SpotData } from './Services/spotifyData.service';
 import { AuthService } from './Services/authentication.service';
 
@@ -6,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './partials/header/header.component';
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     MainContainerComponent,
     SidebarComponent,
     MusicListComponent,
-    CallbackComponent
+    CallbackComponent,
+    NewReleasesComponent
   ],
   imports: [
     BrowserModule,

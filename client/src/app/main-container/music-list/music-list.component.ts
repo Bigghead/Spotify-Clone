@@ -1,6 +1,8 @@
+import { NewReleasesComponent } from './new-releases/new-releases.component';
 import { SpotData } from './../../Services/spotifyData.service';
 import { AuthService } from './../../Services/authentication.service';
 import { Component, OnInit, Injectable } from '@angular/core';
+
 
 @Injectable()
 
@@ -14,7 +16,7 @@ export class MusicListComponent implements OnInit {
   constructor(private authService: AuthService, private spotData: SpotData) { }
 
   hasLoggedIn: boolean = false;
-  albums :any[];
+  
 
 
 
@@ -26,14 +28,6 @@ export class MusicListComponent implements OnInit {
                       res => {
                         console.log(res);
                         this.hasLoggedIn = res;
-                        this.spotData.getNewReleases()
-                                     .subscribe(
-
-                                       (res) => {
-                                         console.log(res.albums.items);
-                                         this.albums = res.albums.items;
-                                       }
-                                     )
                       })
 
   }
