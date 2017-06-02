@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var SpotifyWebApi = require('spotify-web-api-node');
+var Keys = require('./spotKeys.js');
 
 // var index = require('./routes/index');
 // var users = require('./routes/users');
@@ -24,6 +25,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './client/dist')));
 app.use(cors());
+
+//spotify
+var spotifyApi = new SpotifyWebApi({
+  clientId : Keys.spotId,
+  clientSecret : Keys.secret,
+  redirectUri : Keys.callback
+});
+
+app.get('/callback', (req, res) => {
+ res.redirect(`https://accounts.spotify.com/authorize?client_id=${Keys.spotId}&response_type=token&redirect_uri=${Keys.callback}`)
+})
 
 // app.use('/', index);
 // app.use('/users', users);
