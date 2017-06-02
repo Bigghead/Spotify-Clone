@@ -10,6 +10,7 @@ import { HeaderComponent } from './partials/header/header.component';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { SidebarComponent } from './main-container/sidebar/sidebar.component';
 import { MusicListComponent } from './main-container/music-list/music-list.component';
+import { CallbackComponent } from './callback/callback.component';
 
 
 
@@ -17,6 +18,8 @@ const appRoutes: Routes = [
  
     { path : '', redirectTo: '/home', pathMatch: 'full'},
     { path : 'home', component: MainContainerComponent},
+    { path : 'callback', component: CallbackComponent},
+    
     
     
 ]
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     MainContainerComponent,
     SidebarComponent,
-    MusicListComponent
+    MusicListComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
