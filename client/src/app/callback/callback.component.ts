@@ -1,3 +1,4 @@
+import { AuthService } from './../Services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,7 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CallbackComponent implements OnInit {
 
-  constructor(private currentRoute: ActivatedRoute, private router: Router) { }
+  constructor(private currentRoute: ActivatedRoute, 
+              private router: Router, 
+              private authService: AuthService) { }
 
   
 
@@ -18,7 +21,8 @@ export class CallbackComponent implements OnInit {
                      .subscribe(
                        (fragment) => {
                          let token: string = fragment.match(/^(.*?)&/)[1].replace('access_token=', '');
-                         console.log(token);
+                         this.authService.setToken(token);
+                         this.router.navigate(['/']);
                        }
                      )
   }

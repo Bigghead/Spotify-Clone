@@ -1,3 +1,5 @@
+import { SpotData } from './Services/spotifyData.service';
+import { AuthService } from './Services/authentication.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -41,7 +43,7 @@ const appRoutes: Routes = [
     HttpModule, 
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthService, SpotData],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
