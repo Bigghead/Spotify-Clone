@@ -11,6 +11,10 @@ export class SpotData{
 
     constructor(private http: Http, private authService: AuthService){}
 
+    featured: any[];
+    newReleased: any[];
+    moods: any[];
+
     header = new RequestOptions({
         headers: new Headers({
             Authorization: 'Bearer ' + this.authService.token

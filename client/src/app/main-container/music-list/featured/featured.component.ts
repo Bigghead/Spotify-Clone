@@ -20,17 +20,29 @@ export class FeaturedComponent implements OnInit {
 
   ngOnInit() {
 
-    this.authService.featured.subscribe(
-      (res) => {
-        console.log('Heelelelelee')
+    this.fetchData();
+  }
 
-        this.spotData.getFeatured()
-        .subscribe(
-          (res) => this.albums = res.playlists.items
-        )
 
-      }
-    )
+  fetchData(){
+
+    if(!this.spotData.featured){
+    this.authService.hasLoggedIn
+                    .subscribe(
+
+                      res => {
+                        console.log(res);
+
+                        this.spotData.getFeatured()
+                            .subscribe(res => {
+                              this.albums = res.playlists.items;
+                              this.spotData.featured = res.playlists.items;
+                            })
+                                     
+                      })
+    } else {
+      this.albums = this.spotData.featured;
+    }
   }
 
 }

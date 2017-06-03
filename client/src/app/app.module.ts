@@ -22,9 +22,9 @@ import { MoodsComponent } from './main-container/music-list/moods/moods.componen
 
 const appRoutes: Routes = [
 
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: '', component: MainContainerComponent, children: [
+    path: 'home', component: MainContainerComponent, children: [
       { path: 'browse/new-releases', component: NewReleasesComponent },
       { path: 'browse/featured', component: FeaturedComponent },
       {path: 'browse/moods', component: MoodsComponent }

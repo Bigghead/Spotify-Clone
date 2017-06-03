@@ -21,7 +21,13 @@ export class NewReleasesComponent implements OnInit {
 
 
   ngOnInit() {
+    this.fetchData();
+  }
 
+
+  fetchData(){
+
+    if(!this.spotData.newReleased){
     this.authService.hasLoggedIn
                     .subscribe(
 
@@ -32,10 +38,14 @@ export class NewReleasesComponent implements OnInit {
                         this.spotData.getNewReleases()
                             .subscribe(res => {
                               this.albums = res.albums.items;
+                              console.log(this.albums)
+                              this.spotData.newReleased = res.albums.items;
                             })
                                      
                       })
-
+    } else {
+      this.albums = this.spotData.newReleased;
+    }
   }
 
 }
