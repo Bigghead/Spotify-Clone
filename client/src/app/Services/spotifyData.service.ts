@@ -17,6 +17,7 @@ export class SpotData{
         })
     })
 
+
     getNewReleases(){
 
         return this.http.get('https://api.spotify.com/v1/browse/new-releases', this.header)
@@ -27,6 +28,7 @@ export class SpotData{
                  })
     }
 
+
     getFeatured(){
         
         return this.http.get('https://api.spotify.com/v1/browse/featured-playlists', this.header)
@@ -35,6 +37,15 @@ export class SpotData{
                      console.log(err);
                     return Observable.throw(err);
                  })
-                 
-    }
+    
+     }
+
+
+     getMoods(){
+
+         return this.http.get('https://api.spotify.com/v1/browse/categories', this.header)
+                  .map(res => res.json())
+                  .catch(err => Observable.throw(err))
+
+     }
 }

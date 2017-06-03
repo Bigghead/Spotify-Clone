@@ -20,10 +20,17 @@ export class FeaturedComponent implements OnInit {
 
   ngOnInit() {
 
-    this.spotData.getFeatured()
+    this.authService.featured.subscribe(
+      (res) => {
+        console.log('Heelelelelee')
+
+        this.spotData.getFeatured()
         .subscribe(
           (res) => this.albums = res.playlists.items
         )
+
+      }
+    )
   }
 
 }

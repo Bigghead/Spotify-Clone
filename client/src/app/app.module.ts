@@ -16,17 +16,25 @@ import { SidebarComponent } from './main-container/sidebar/sidebar.component';
 import { MusicListComponent } from './main-container/music-list/music-list.component';
 import { CallbackComponent } from './callback/callback.component';
 import { FeaturedComponent } from './main-container/music-list/featured/featured.component';
+import { MoodsComponent } from './main-container/music-list/moods/moods.component';
 
 
 
 const appRoutes: Routes = [
- 
-    { path : '', redirectTo: '/home', pathMatch: 'full'},
-    { path : 'home', component: MainContainerComponent},
-    { path : 'callback', component: CallbackComponent},
-    
-    
-    
+
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  {
+    path: '', component: MainContainerComponent, children: [
+      { path: 'browse/new-releases', component: NewReleasesComponent },
+      { path: 'browse/featured', component: FeaturedComponent },
+      {path: 'browse/moods', component: MoodsComponent }
+
+    ]
+  },
+  { path: 'callback', component: CallbackComponent },
+
+
+
 ]
 
 
@@ -40,12 +48,13 @@ const appRoutes: Routes = [
     MusicListComponent,
     CallbackComponent,
     NewReleasesComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    MoodsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule, 
+    HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthService, SpotData],
