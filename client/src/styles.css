@@ -1,13 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
-
+html {
+    position: relative;
+    min-height: 100%;
+}
 body{
-    background: #606c88;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #5C258D;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4389A2, #5C258D);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4389A2, #5C258D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   
+
+  
 
 }
 
 .card-content{
     text-overflow: ellipsis;
 }
+
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:250px;
+   width:100%;
+   background:#999;
+}
+
+
+
