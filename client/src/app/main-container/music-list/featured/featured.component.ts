@@ -27,19 +27,13 @@ export class FeaturedComponent implements OnInit {
   fetchData(){
 
     if(!this.spotData.featured){
-    this.authService.hasLoggedIn
-                    .subscribe(
-
-                      res => {
-                        console.log(res);
 
                         this.spotData.getFeatured()
                             .subscribe(res => {
                               this.albums = res.playlists.items;
                               this.spotData.featured = res.playlists.items;
                             })
-                                     
-                      })
+  
     } else {
       this.albums = this.spotData.featured;
     }

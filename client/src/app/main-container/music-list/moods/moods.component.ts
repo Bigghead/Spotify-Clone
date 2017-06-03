@@ -24,18 +24,12 @@ export class MoodsComponent implements OnInit {
   fetchData(){
 
     if(!this.spotData.moods){
-    this.authService.hasLoggedIn
-                    .subscribe(
-
-                      res => {
 
                         this.spotData.getMoods()
                             .subscribe(res => {
                               this.albums = res.categories.items;
                               this.spotData.moods = res.categories.items;
                             })
-                                     
-                      })
     } else {
       this.albums = this.spotData.moods;
     }

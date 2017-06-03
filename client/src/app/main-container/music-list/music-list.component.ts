@@ -22,7 +22,7 @@ export class MusicListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.authService.hasLoggedIn
+    this.authService.user
                     .subscribe(
 
                       res => {

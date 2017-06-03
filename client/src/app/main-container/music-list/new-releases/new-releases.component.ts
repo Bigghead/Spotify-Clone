@@ -15,7 +15,6 @@ export class NewReleasesComponent implements OnInit {
               private spotData: SpotData, 
               private http: Http) { }
 
-   hasLoggedIn: boolean = false;
    albums :any[];
    header = this.spotData.header
 
@@ -27,13 +26,7 @@ export class NewReleasesComponent implements OnInit {
 
   fetchData(){
 
-    if(!this.spotData.newReleased){
-    this.authService.hasLoggedIn
-                    .subscribe(
-
-                      res => {
-                        console.log(res);
-                        this.hasLoggedIn = res;
+    // if(!this.spotData.newReleased){
 
                         this.spotData.getNewReleases()
                             .subscribe(res => {
@@ -41,11 +34,10 @@ export class NewReleasesComponent implements OnInit {
                               console.log(this.albums)
                               this.spotData.newReleased = res.albums.items;
                             })
-                                     
-                      })
-    } else {
-      this.albums = this.spotData.newReleased;
-    }
+                           
+    // } else {
+    //   this.albums = this.spotData.newReleased;
+    // }
   }
 
 }

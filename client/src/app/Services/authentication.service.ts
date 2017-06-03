@@ -10,7 +10,7 @@ export class AuthService{
     constructor(){}
 
     token: string;
-    user = new Subject<boolean>();
+    user = new ReplaySubject<any>(5);
     hasLoggedIn = new ReplaySubject<boolean>();
     featured = new ReplaySubject<boolean>();
     moods    = new ReplaySubject<boolean>();
@@ -21,9 +21,6 @@ export class AuthService{
 
         this.token = token;
         this.user.next(true);
-        this.hasLoggedIn.next(true);
-        this.featured.next(true);
-        this.moods.next(true);
     }
 
 
