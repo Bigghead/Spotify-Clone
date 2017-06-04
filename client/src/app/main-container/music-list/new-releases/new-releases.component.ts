@@ -26,7 +26,7 @@ export class NewReleasesComponent implements OnInit {
 
   fetchData(){
 
-    // if(!this.spotData.newReleased){
+    if(!this.spotData.newReleased){
 
                         this.spotData.getNewReleases()
                             .subscribe(res => {
@@ -34,7 +34,7 @@ export class NewReleasesComponent implements OnInit {
                               console.log(this.albums)
                               this.spotData.newReleased = res.albums.items;
                             })
-                           
+               }         
     // } else {
     //   this.albums = this.spotData.newReleased;
     // }

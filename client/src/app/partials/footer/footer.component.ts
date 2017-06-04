@@ -9,7 +9,14 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
+  progress = 0;
+
   ngOnInit() {
+    setInterval( () => {
+      this.progress += 1;
+    }, 300)
   }
+
+  
 
 }

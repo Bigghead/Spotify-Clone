@@ -9,7 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 
 
@@ -22,10 +21,24 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/soundmanager2/2.97a.20150601/script/soundmanager2-jsmin.js"></script>
   <script>
-    $(document).ready(function(){
-    $('ul.tabs').tabs();
-  });
+    $(document).ready(function () {
+      $('ul.tabs').tabs();
+
+      soundManager.setup({
+        url: 'https://cdnjs.cloudflare.com/ajax/libs/soundmanager2/2.97a.20150601/swf/soundmanager2_flash9.swf',
+        flashVersion: 9, // optional: shiny features (default = 8)
+        // optional: ignore Flash where possible, use 100% HTML5 mode
+        // preferFlash: false,
+        onready: function () {
+          // Ready to use; soundManager.createSound() etc. can now be called.
+          // soundManager.createSound({
+          //   url: 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'
+          // }).play();
+        }
+      });
+    });
   </script>
 
 </body>

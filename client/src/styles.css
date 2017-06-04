@@ -22,9 +22,14 @@ footer {
    position:fixed;
    left:0px;
    bottom:0px;
-   height:250px;
+   height:150px;
    width:100%;
    background:#999;
+   background-color: #22a952;
+}
+.page-footer{
+   background-color: #606c88;
+    
 }
 
 
