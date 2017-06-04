@@ -7,8 +7,11 @@
           <div class="col s4 ">
             <i class="material-icons medium white-text">skip_previous</i>
           </div>
-          <div class="col s4">
-            <i class="material-icons medium white-text">play_circle_outline</i>
+          <div class="col s4" *ngIf="!playing">
+            <i class="material-icons medium white-text" (click)='playSong()'>play_circle_outline</i>
+          </div>
+          <div class="col s4" *ngIf="playing">
+            <i class="material-icons medium white-text" (click)='pauseSong()'>pause_circle_outline</i>
           </div>
           <div class="col s4">
             <i class="material-icons medium white-text">skip_next</i>
@@ -19,11 +22,16 @@
 
       <div class="col s12">
         <div class="progress">
-      <div class="determinate" [ngStyle]="{ width : progress + '%'}"></div>
+      <div class="determinate" [ngStyle]="{ width : progressBar + '%'}"></div>
   </div>
       </div>
     </div>
     </div>
+
+    <audio id='audio'
+  src="http://www.sousound.com/music/healing/healing_01.mp3"
+  >
+</audio>
     <!--<div class="footer-copyright">
     <div class="container">
       © 2014 Copyright Text
