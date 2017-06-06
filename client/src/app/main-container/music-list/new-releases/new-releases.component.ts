@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { SpotData } from '../../../Services/spotifyData.service';
@@ -13,7 +14,8 @@ export class NewReleasesComponent implements OnInit {
 
   constructor(private authService: AuthService, 
               private spotData: SpotData, 
-              private http: Http) { }
+              private http: Http, 
+              private router : Router) { }
 
    albums :any[];
    header = this.spotData.header
@@ -31,13 +33,20 @@ export class NewReleasesComponent implements OnInit {
                         this.spotData.getNewReleases()
                             .subscribe(res => {
                               this.albums = res.albums.items;
-                              console.log(this.albums)
                               this.spotData.newReleased = res.albums.items;
                             })
-               }         
-    // } else {
-    //   this.albums = this.spotData.newReleased;
-    // }
+               }  else {
+      this.albums = this.spotData.newReleased;
+    }
+
+  }
+
+
+  passAlbumData(album){
+
+    this.spotData.trackOrAlbum = album;
+    this.router.navigate(["/home/album", album.id])
+
   }
 
 }

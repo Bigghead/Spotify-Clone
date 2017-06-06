@@ -18,6 +18,8 @@ import { CallbackComponent } from './callback/callback.component';
 import { FeaturedComponent } from './main-container/music-list/featured/featured.component';
 import { MoodsComponent } from './main-container/music-list/moods/moods.component';
 import { FooterComponent } from './partials/footer/footer.component';
+import { PlaylistComponent } from './main-container/playlist/playlist.component';
+import { BrowseComponent } from './main-container/music-list/browse/browse.component';
 
 
 
@@ -26,9 +28,12 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home', component: MainContainerComponent, children: [
+      
       { path: 'browse/new-releases', component: NewReleasesComponent },
       { path: 'browse/featured', component: FeaturedComponent },
-      {path: 'browse/moods', component: MoodsComponent }
+      { path: 'browse/moods', component: MoodsComponent },
+      { path: 'album/:albumId', component: PlaylistComponent }
+      
 
     ]
   },
@@ -51,7 +56,10 @@ const appRoutes: Routes = [
     NewReleasesComponent,
     FeaturedComponent,
     MoodsComponent,
-    FooterComponent
+    FooterComponent,
+    PlaylistComponent,
+    BrowseComponent
+
   ],
   imports: [
     BrowserModule,

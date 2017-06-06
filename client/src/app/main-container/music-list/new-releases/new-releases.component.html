@@ -1,16 +1,18 @@
- <div id="test1" class="col s12">
-     <div class="row">
-        <div class="col m4 s6" *ngFor='let album of albums'>
-            <div class="card">
-            <div class="card-image">
-              <img src="{{ album.images[0].url }}">
-              <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-              <p>{{ album.name }}</p>
-              <p>{{ album.artists[0].name}}</p>
-            </div>
+<div id="test1" class="col s12">
+  <div class="row">
+    <div class="col m4 s6" *ngFor='let album of albums'>
+      <a (click)="passAlbumData(album)">
+        <div class="card">
+          <div class="card-image">
+            <img src="{{ album.images[0].url }}">
+            <span class="card-title">Card Title</span>
+          </div>
+          <div class="card-content">
+            <p>{{ album.name }}</p>
+            <p>{{ album.artists[0].name}}</p>
           </div>
         </div>
-      </div>
+      </a>
     </div>
+  </div>
+</div>
