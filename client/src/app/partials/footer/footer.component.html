@@ -1,29 +1,33 @@
 <footer class="page-footer valign-wrapper">
-  <div class="container">
-    <h6>Song title</h6>
-    <div class="row">
-      <div class="col s6 offset-s3">
-        <div class="row">
-          <div class="col s4 ">
-            <i class="material-icons medium white-text">skip_previous</i>
-          </div>
-          <div class="col s4" *ngIf="!playing">
-            <i class="material-icons medium white-text" (click)='playSong()'>play_circle_outline</i>
-          </div>
-          <div class="col s4" *ngIf="playing">
-            <i class="material-icons medium white-text" (click)='pauseSong()'>pause_circle_outline</i>
-          </div>
-          <div class="col s4">
-            <i class="material-icons medium white-text">skip_next</i>
-          </div>
 
-        </div>
+  <div class="row">
+
+    <div class="col s3" >
+      <div class="row" [hidden]="!imageUrl">
+        <div class="col s4" >
+          <img src="{{ imageUrl }}" class='small-album-image responsive-img' alt="">
+        </div>]
       </div>
+    </div>
 
-      <div class="col s12">
-        <div class="progress">
-          <div class="determinate" [ngStyle]="{ width : progressBar + '%'}"></div>
+    <div class="col s6 ">
+      <div class="row center-align">
+        <div class="col s4 ">
+          <i class="material-icons small white-text">skip_previous</i>
         </div>
+        <div class="col s4" *ngIf="!playing">
+          <i class="material-icons small white-text" (click)='playSong()'>play_circle_outline</i>
+        </div>
+        <div class="col s4" *ngIf="playing">
+          <i class="material-icons small white-text" (click)='pauseSong()'>pause_circle_outline</i>
+        </div>
+        <div class="col s4">
+          <i class="material-icons small white-text">skip_next</i>
+        </div>
+
+      </div>
+      <div class="progress">
+        <div class="determinate" [ngStyle]="{ width : progressBar + '%'}"></div>
       </div>
     </div>
   </div>

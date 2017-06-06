@@ -1,3 +1,21 @@
 .material-icons{
     cursor: pointer;
 }
+
+.row{
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
+.progress{
+    margin-top: -10px;
+}
+
+.small-album-image{
+    max-height: 65px;
+}

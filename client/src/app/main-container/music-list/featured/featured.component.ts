@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { SpotData } from '../../../Services/spotifyData.service';
 import { AuthService } from './../../../Services/authentication.service';
@@ -12,7 +13,8 @@ export class FeaturedComponent implements OnInit {
 
   constructor(private authService: AuthService, 
               private spotData: SpotData, 
-              private http: Http) { }
+              private http: Http, 
+              private router: Router) { }
 
   
   albums: any[];
@@ -39,4 +41,13 @@ export class FeaturedComponent implements OnInit {
     }
   }
 
+
+  getPlaylistData(id: string, imageUrl: string){
+  
+    this.spotData.imageUrl = imageUrl;
+    this.router.navigate(['/home/user/spotify/playlist/', id]);
 }
+
+}
+
+

@@ -1,15 +1,15 @@
-import { MusicPlayerService } from './../../Services/musicPlayer.service';
-import { SpotData } from './../../Services/spotifyData.service';
+import { MusicPlayerService } from './../../../Services/musicPlayer.service';
+import { SpotData } from './../../../Services/spotifyData.service';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-playlist',
-  templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.css']
+  selector: 'app-user-playlist',
+  templateUrl: './user-playlist.component.html',
+  styleUrls: ['./user-playlist.component.css']
 })
-export class PlaylistComponent implements OnInit {
+export class UserPlaylistComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute,
     private http: Http,
@@ -19,36 +19,33 @@ export class PlaylistComponent implements OnInit {
 
   imageUrl;
   tracks;
-  musicData;
-
 
   ngOnInit() {
 
-    this.imageUrl = this.spotData.imageUrl;
+    this.imageUrl = this.spotData.imageUrl
 
-    this.currentRoute.params.subscribe(
-      (params) => {
+    this.currentRoute.params
+      .subscribe(
+      params => {
 
-        const albumId = params['albumId'];
+        const id = params['id'];
 
-
-        this.spotData.getTracks(`https://api.spotify.com/v1/albums/${albumId}/tracks`)
+        this.spotData.getTracks('https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX4WYpdgoIcn6/tracks')
           .subscribe(
           res => {
 
+            console.log(res);
             this.tracks = res.items;
             console.log(this.tracks);
 
           }
           )
-
       }
-    )
+      )
   }
 
 
-
-  playTrack(currentTrack, url: string) {
+   playTrack(currentTrack, url: string) {
 
     this.musicPlayer.imageUrl.next(this.imageUrl);
     this.musicPlayer.currentTrack.next(currentTrack);

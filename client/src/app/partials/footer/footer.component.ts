@@ -17,6 +17,8 @@ export class FooterComponent implements OnInit {
   progress;
   progressBar: number = 0;
   musicUrl :string;
+  currentTrack;
+  imageUrl;
 
 
   ngOnInit() {
@@ -28,9 +30,22 @@ export class FooterComponent implements OnInit {
                       res => {
                         this.musicUrl = res;
                         setTimeout( () => {
+                          this.clearSong();
                           this.playSong();
                         })
                       }
+                    )
+
+    this.musicPlayer.currentTrack
+                    .subscribe(
+                      res => {
+                        this.currentTrack = res;
+                      }
+                    )
+
+    this.musicPlayer.imageUrl
+                    .subscribe(
+                      res => this.imageUrl = res
                     )
    
   }
@@ -38,7 +53,6 @@ export class FooterComponent implements OnInit {
 
   playSong(){
     
-    this.progressBar = 0;
     if(this.progress){
       this.progress.unsubscribe(); 
     }

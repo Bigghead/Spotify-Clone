@@ -11,17 +11,17 @@
             <p>{{ i + 1 }}</p>
           </div>
           <div class="col m5">
-            <p>{{ track.name }}</p>
+            <p>{{ track.track.name }}</p>
           </div>
           <div class="col m2">
-            <p>{{ track.duration_ms | formatDuration}}</p>
+            <p>{{ track.track.duration_ms | formatDuration}}</p>
           </div>
           <div class="col m3" 
-               *ngIf="track.preview_url"
-               (click)="playTrack(track, track.preview_url)">
+               *ngIf="track.track.preview_url"
+               (click)="playTrack(track, track.track.preview_url)">
             <p>Play Preview</p>
           </div>
-           <div class="col m3" *ngIf="!track.preview_url">
+           <div class="col m3" *ngIf="!track.track.preview_url">
             <p>No Preview</p>
           </div>
         </div>

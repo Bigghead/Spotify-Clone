@@ -14,7 +14,7 @@ export class SpotData{
     featured: any[];
     newReleased: any[];
     moods: any[];
-    trackOrAlbum;
+    imageUrl;
 
     header = new RequestOptions({
         headers: new Headers({
@@ -55,9 +55,9 @@ export class SpotData{
      }
 
 
-     getTracks(albumId){
+     getTracks(url: string){
 
-         return this.http.get(`https://api.spotify.com/v1/albums/${albumId}/tracks`, this.header)
+         return this.http.get(url, this.header)
                          .map(res => res.json())
                          .catch(err => Observable.throw(err))
      }

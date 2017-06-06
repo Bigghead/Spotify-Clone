@@ -22,6 +22,7 @@ import { MoodsComponent } from './main-container/music-list/moods/moods.componen
 import { FooterComponent } from './partials/footer/footer.component';
 import { PlaylistComponent } from './main-container/playlist/playlist.component';
 import { BrowseComponent } from './main-container/music-list/browse/browse.component';
+import { UserPlaylistComponent } from './main-container/music-list/user-playlist/user-playlist.component';
 
 
 
@@ -38,7 +39,10 @@ const appRoutes: Routes = [
         ]
       },
 
-      { path: 'album/:albumId', component: PlaylistComponent }
+      { path: 'album/:albumId', component: PlaylistComponent },
+      { path: 'user/spotify/playlist/:albumId', component: UserPlaylistComponent }
+      
+      
 
     ]
   },
@@ -64,7 +68,8 @@ const appRoutes: Routes = [
     FooterComponent,
     PlaylistComponent,
     BrowseComponent,
-    TimeDurationPipe
+    TimeDurationPipe,
+    UserPlaylistComponent
 
   ],
   imports: [

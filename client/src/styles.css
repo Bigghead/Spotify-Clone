@@ -10,7 +10,7 @@ background: -webkit-linear-gradient(to right, #4389A2, #5C258D);  /* Chrome 10-2
 background: linear-gradient(to right, #4389A2, #5C258D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    
 height: 100%;
-padding-bottom: 150px;
+padding-bottom: 75px;
   
 
 }
@@ -23,7 +23,7 @@ footer {
    position:fixed;
    left:0px;
    bottom:0px;
-   height:150px;
+   height:75px;
    width:100%;
    background:#999;
    background-color: #22a952;
