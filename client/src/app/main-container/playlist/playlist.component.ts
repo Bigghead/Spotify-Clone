@@ -1,3 +1,4 @@
+import { MusicPlayerService } from './../../Services/musicPlayer.service';
 import { SpotData } from './../../Services/spotifyData.service';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +13,8 @@ export class PlaylistComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, 
               private http: Http, 
-              private spotData: SpotData) { }
+              private spotData: SpotData,
+              private musicPlayer: MusicPlayerService) { }
 
 
 album; 
@@ -39,6 +41,12 @@ musicData;
                      )
       }
     )
+  }
+
+
+  playTrack(url: string){
+
+    this.musicPlayer.musicUrl.next(url);
   }
 
 

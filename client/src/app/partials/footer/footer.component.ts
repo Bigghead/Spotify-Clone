@@ -1,3 +1,4 @@
+import { MusicPlayerService } from './../../Services/musicPlayer.service';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,29 +9,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private musicPlayer: MusicPlayerService) { }
+
 
   audio;
   playing: boolean = false;
   progress;
   progressBar: number = 0;
+  musicUrl :string;
+
 
   ngOnInit() {
 
-
     this.audio = document.querySelector('#audio');
+
+    this.musicPlayer.musicUrl
+                    .subscribe(
+                      res => {
+                        this.musicUrl = res;
+                        setTimeout( () => {
+                          this.playSong();
+                        })
+                      }
+                    )
    
   }
 
 
   playSong(){
-
-    this.audio.play();
-     this.progress = Observable.interval(300)
+    
+    this.progressBar = 0;
+    if(this.progress){
+      this.progress.unsubscribe(); 
+    }
+    
+    this.audio.play()
+              .then(() => {
+                 this.progress = Observable.interval(300)
                                .subscribe(
                                  res => this.progressBar += 1
                                )
-          this.playing = true;
+                 this.playing = true;
+              })
+              .catch(err => console.log(err));
+   
 
   }
 
@@ -40,6 +62,13 @@ export class FooterComponent implements OnInit {
     this.audio.pause();
     this.progress.unsubscribe();
     this.playing = false;
+
+  }
+
+  clearSong(){
+
+      this.progressBar = 0;
+      this.playing = false;
 
   }
 

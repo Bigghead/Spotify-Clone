@@ -1,3 +1,31 @@
-<p>
-  playlist works!
-</p>
+<div class="row main-row" >
+  <div class="col m3 ">
+    <img src="{{ album.images[0].url }}"  class="responsive-img" alt="{{album.name}}">
+  </div>
+
+  <div class="col m9">
+    <div class="row">
+      <div class="col m12" *ngFor="let track of tracks; let i = index">
+        <div class="row trackInfo white-text">
+          <div class="col m2">
+            <p>{{ i + 1 }}</p>
+          </div>
+          <div class="col m5">
+            <p>{{ track.name }}</p>
+          </div>
+          <div class="col m2">
+            <p>{{ track.duration_ms | formatDuration}}</p>
+          </div>
+          <div class="col m3" 
+               *ngIf="track.preview_url"
+               (click)="playTrack(track.preview_url)">
+            <p>Play Preview</p>
+          </div>
+           <div class="col m3" *ngIf="!track.preview_url">
+            <p>No Preview</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+import { MusicPlayerService } from './Services/musicPlayer.service';
+import { TimeDurationPipe } from './Custom-Pipes/timeDuration.pipe';
 import { NewReleasesComponent } from './main-container/music-list/new-releases/new-releases.component';
 import { SpotData } from './Services/spotifyData.service';
 import { AuthService } from './Services/authentication.service';
@@ -61,7 +63,8 @@ const appRoutes: Routes = [
     MoodsComponent,
     FooterComponent,
     PlaylistComponent,
-    BrowseComponent
+    BrowseComponent,
+    TimeDurationPipe
 
   ],
   imports: [
@@ -70,7 +73,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, SpotData],
+  providers: [AuthService, SpotData, MusicPlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

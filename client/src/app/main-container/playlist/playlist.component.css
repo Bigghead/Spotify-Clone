@@ -1,0 +1,13 @@
+.main-row{
+    padding-top: 30px;
+    background-size: contain;
+}
+
+.trackInfo{
+    transition: .3s ease-in all;
+    cursor: pointer;
+}
+.trackInfo:hover{
+    background-color: lightseagreen;
+
+}
