@@ -28,12 +28,15 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home', component: MainContainerComponent, children: [
-      
-      { path: 'browse/new-releases', component: NewReleasesComponent },
-      { path: 'browse/featured', component: FeaturedComponent },
-      { path: 'browse/moods', component: MoodsComponent },
+      {
+        path: 'browse', component: MusicListComponent, children: [
+          { path: 'new-releases', component: NewReleasesComponent },
+          { path: 'featured', component: FeaturedComponent },
+          { path: 'moods', component: MoodsComponent },
+        ]
+      },
+
       { path: 'album/:albumId', component: PlaylistComponent }
-      
 
     ]
   },
