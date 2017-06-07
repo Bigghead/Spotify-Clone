@@ -6,7 +6,7 @@
       <div class="row" [hidden]="!imageUrl">
         <div class="col s4" >
           <img src="{{ imageUrl }}" class='small-album-image responsive-img' alt="">
-        </div>]
+        </div>
       </div>
     </div>
 
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <audio id='audio' onended="clearSong()" crossorigin="anonymous" src="{{ musicUrl }}">
+  <audio id='audio' ended="clearSong()" crossorigin="anonymous" src="{{ musicUrl }}">
   </audio>
   <!--<div class="footer-copyright">
     <div class="container">

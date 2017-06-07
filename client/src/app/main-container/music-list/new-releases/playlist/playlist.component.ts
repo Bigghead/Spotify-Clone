@@ -1,5 +1,5 @@
-import { MusicPlayerService } from './../../Services/musicPlayer.service';
-import { SpotData } from './../../Services/spotifyData.service';
+import { MusicPlayerService } from './../../../../Services/musicPlayer.service';
+import { SpotData } from './../../../../Services/spotifyData.service';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

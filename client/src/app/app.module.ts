@@ -20,9 +20,9 @@ import { CallbackComponent } from './callback/callback.component';
 import { FeaturedComponent } from './main-container/music-list/featured/featured.component';
 import { MoodsComponent } from './main-container/music-list/moods/moods.component';
 import { FooterComponent } from './partials/footer/footer.component';
-import { PlaylistComponent } from './main-container/playlist/playlist.component';
-import { BrowseComponent } from './main-container/music-list/browse/browse.component';
-import { UserPlaylistComponent } from './main-container/music-list/user-playlist/user-playlist.component';
+import { PlaylistComponent } from './main-container/music-list/new-releases/playlist/playlist.component';
+import { UserPlaylistComponent } from './main-container/music-list/featured/user-playlist/user-playlist.component';
+import { MoodPlaylistComponent } from './main-container/music-list/moods/mood-playlist/mood-playlist.component';
 
 
 
@@ -40,9 +40,11 @@ const appRoutes: Routes = [
       },
 
       { path: 'album/:albumId', component: PlaylistComponent },
-      { path: 'user/spotify/playlist/:albumId', component: UserPlaylistComponent }
-      
-      
+      { path: 'user/spotify/playlist/:albumId', component: UserPlaylistComponent },
+      { path: 'view/:mood', component: MoodPlaylistComponent }
+
+
+
 
     ]
   },
@@ -67,9 +69,9 @@ const appRoutes: Routes = [
     MoodsComponent,
     FooterComponent,
     PlaylistComponent,
-    BrowseComponent,
     TimeDurationPipe,
-    UserPlaylistComponent
+    UserPlaylistComponent,
+    MoodPlaylistComponent
 
   ],
   imports: [

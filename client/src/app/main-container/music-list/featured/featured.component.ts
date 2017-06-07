@@ -1,7 +1,7 @@
+import { AuthService } from './../../../Services/authentication.service';
+import { SpotData } from './../../../Services/spotifyData.service';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
-import { SpotData } from '../../../Services/spotifyData.service';
-import { AuthService } from './../../../Services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

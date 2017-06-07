@@ -1,5 +1,5 @@
-import { MusicPlayerService } from './../../../Services/musicPlayer.service';
-import { SpotData } from './../../../Services/spotifyData.service';
+import { SpotData } from './../../../../Services/spotifyData.service';
+import { MusicPlayerService } from './../../../../Services/musicPlayer.service';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -47,7 +47,7 @@ export class UserPlaylistComponent implements OnInit {
 
    playTrack(currentTrack, url: string) {
 
-    this.musicPlayer.imageUrl.next(this.imageUrl);
+    this.musicPlayer.imageUrl.next(currentTrack.track.album.images[0].url);
     this.musicPlayer.currentTrack.next(currentTrack);
     this.musicPlayer.musicUrl.next(url);
   }

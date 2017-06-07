@@ -24,6 +24,9 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
 
     this.audio = document.querySelector('#audio');
+    this.audio.onended = () => {
+      this.clearSong();
+    }
 
     this.musicPlayer.musicUrl
                     .subscribe(
@@ -67,7 +70,6 @@ export class FooterComponent implements OnInit {
               })
               .catch(err => console.log(err));
    
-
   }
 
 
@@ -83,6 +85,9 @@ export class FooterComponent implements OnInit {
 
       this.progressBar = 0;
       this.playing = false;
+      if(this.progress){
+        this.progress.unsubscribe();
+      }
 
   }
 

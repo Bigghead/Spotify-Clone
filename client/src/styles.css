@@ -15,6 +15,10 @@ padding-bottom: 75px;
 
 }
 
+a{
+    cursor: pointer;
+}
+
 .card-content{
     text-overflow: ellipsis;
 }
