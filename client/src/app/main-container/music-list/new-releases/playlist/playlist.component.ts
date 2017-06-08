@@ -38,6 +38,7 @@ export class PlaylistComponent implements OnInit {
 
             this.tracks = res.items;
             console.log(this.tracks);
+            this.musicPlayer.setPlaylist(res.items);
 
           }
           )

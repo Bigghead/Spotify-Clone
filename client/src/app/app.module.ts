@@ -40,7 +40,7 @@ const appRoutes: Routes = [
       },
 
       { path: 'album/:albumId', component: PlaylistComponent },
-      { path: 'user/spotify/playlist/:albumId', component: UserPlaylistComponent },
+      { path: 'playlist/:albumId', component: UserPlaylistComponent },
       { path: 'view/:mood', component: MoodPlaylistComponent }
 
 

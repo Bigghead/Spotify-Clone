@@ -28,16 +28,16 @@ export class UserPlaylistComponent implements OnInit {
       .subscribe(
       params => {
 
-        const id = params['id'];
+        const id = params['albumId'];
 
-        this.spotData.getTracks('https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DX4WYpdgoIcn6/tracks')
+        this.spotData.getTracks(`https://api.spotify.com/v1/users/spotify/playlists/${id}/tracks`)
           .subscribe(
           res => {
 
             console.log(res);
             this.tracks = res.items;
             console.log(this.tracks);
-
+            this.musicPlayer.setPlaylist(res.items);
           }
           )
       }
