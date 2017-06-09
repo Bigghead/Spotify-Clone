@@ -21,6 +21,8 @@ export class MoodPlaylistComponent implements OnInit {
   
   ngOnInit() {
 
+    console.log('hi');
+
     this.currentRoute.params
                      .subscribe(
                        params => {

@@ -30,29 +30,16 @@ export class PlaylistComponent implements OnInit {
     this.currentRoute.params.subscribe(
       (params) => {
 
-        const albumId = params['albumId'];
+        if (params['albumOrPlaylist'] === 'album') {
 
+          const albumId = params['albumId'];
+          this.getAlbumTracks(albumId);
+         
+        } else if (params['albumOrPlaylist'] === 'playlist'){
 
-        this.spotData.getTracks(`https://api.spotify.com/v1/albums/${albumId}/tracks`)
-          .subscribe(
-          res => {
-
-            this.tracks = res.items;
-            console.log(this.tracks);
-            this.playlistArray = res.items.filter( track => track.preview_url != null)
-                                           .map( track => {
-                                             return {
-                                               id: track.id, 
-                                               preview: track.preview_url, 
-                                               image: this.imageUrl
-                                             }
-                                           })
-            
-            this.musicPlayer.setPlaylist(this.playlistArray);
-
-          }
-          )
-
+          const id = params['albumId'];
+          this.getPlaylistTracks(id);
+        }
       }
     )
   }
@@ -63,22 +50,70 @@ export class PlaylistComponent implements OnInit {
 
     return new Promise((resolve, reject) => {
 
-      resolve(this.playlistArray.forEach(( track , index ) => {
+      resolve(this.playlistArray.forEach((track, index) => {
 
-        if(track.id === id){
+        if (track.id === id) {
 
           resolve(index);
 
         }
-        
+
       }));
     }).then((index: number) => {
 
       this.musicPlayer.currentlyPlayingIndex = index;
 
-       this.musicPlayer.imageUrl.next(this.imageUrl);
-       this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
+      this.musicPlayer.imageUrl.next(this.playlistArray[index].image);
+      this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
     })
+  }
+
+
+  getAlbumTracks(id: string){
+
+     this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}/tracks`)
+            .subscribe(
+            res => {
+
+              this.tracks = res.items;
+              console.log(this.tracks);
+              this.playlistArray = res.items.filter(track => track.preview_url != null)
+                .map(track => {
+                  return {
+                    id: track.id,
+                    preview: track.preview_url,
+                    image: this.imageUrl
+                  }
+                })
+
+              this.musicPlayer.setPlaylist(this.playlistArray);
+
+            }
+            )
+  }
+
+
+  getPlaylistTracks(id: string){
+
+     this.spotData.getTracks(`https://api.spotify.com/v1/users/spotify/playlists/${id}/tracks`)
+            .subscribe(
+            res => {
+
+              this.tracks = res.items.map(track => track.track);
+              console.log(this.tracks);
+              this.playlistArray = this.tracks.filter(track => track.preview_url != null)
+                .map(track => {
+                  return {
+                    id: track.id,
+                    preview: track.preview_url,
+                    image: track.album.images[0].url
+                  }
+                })
+
+              this.musicPlayer.setPlaylist(this.playlistArray);
+
+            }
+            )
   }
 
 

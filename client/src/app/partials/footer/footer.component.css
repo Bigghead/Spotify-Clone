@@ -14,6 +14,12 @@
 
 .progress{
     margin-top: -10px;
+    background-color: #404040
+}
+
+.determinate{
+    /*background-color: #22a952;*/
+    background-color: white;
 }
 
 .small-album-image{
