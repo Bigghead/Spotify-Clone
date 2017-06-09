@@ -32,6 +32,7 @@ export class FooterComponent implements OnInit {
                     .subscribe(
                       res => {
                         this.musicUrl = res;
+                        
                         setTimeout( () => {
                           this.clearSong();
                           this.playSong();
@@ -87,6 +88,11 @@ export class FooterComponent implements OnInit {
   playNext(){
 
     this.musicPlayer.playNext();
+  }
+
+  playPrev(){
+
+    this.musicPlayer.playPrev();
   }
 
   

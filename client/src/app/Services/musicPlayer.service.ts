@@ -17,11 +17,34 @@ export class MusicPlayerService{
         this.currentPlaylist = playlistArray;
     }
 
+
    playNext(){
+
        if(this.currentlyPlayingIndex < this.currentPlaylist.length - 1){
-           this.musicUrl.next(this.currentPlaylist[this.currentlyPlayingIndex + 1].preview);
+
+           const currentlyPlaying = this.currentPlaylist[this.currentlyPlayingIndex + 1];
+
+           this.musicUrl.next(currentlyPlaying.preview);
+           this.imageUrl.next(currentlyPlaying.image);
+
            this.currentlyPlayingIndex ++;
        }
+
+   }
+
+
+   playPrev(){
+
+        if(this.currentlyPlayingIndex > 0){
+
+            const currentlyPlaying = this.currentPlaylist[this.currentlyPlayingIndex - 1];
+
+            this.musicUrl.next(currentlyPlaying.preview);
+            this.imageUrl.next(currentlyPlaying.image)
+
+            this.currentlyPlayingIndex --;
+        }
+
    }
 
     

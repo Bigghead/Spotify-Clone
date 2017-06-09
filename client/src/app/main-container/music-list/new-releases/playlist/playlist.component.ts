@@ -62,12 +62,18 @@ export class PlaylistComponent implements OnInit {
   playTrack(id: string) {
 
     return new Promise((resolve, reject) => {
+
       resolve(this.playlistArray.forEach(( track , index ) => {
+
         if(track.id === id){
+
           resolve(index);
+
         }
+        
       }));
     }).then((index: number) => {
+
       this.musicPlayer.currentlyPlayingIndex = index;
 
        this.musicPlayer.imageUrl.next(this.imageUrl);

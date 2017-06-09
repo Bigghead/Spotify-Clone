@@ -13,7 +13,7 @@
     <div class="col s6 ">
       <div class="row center-align">
         <div class="col s4 ">
-          <i class="material-icons small white-text">skip_previous</i>
+          <i class="material-icons small white-text" (click)="playPrev()">skip_previous</i>
         </div>
         <div class="col s4" *ngIf="!playing">
           <i class="material-icons small white-text" (click)='playSong()'>play_circle_outline</i>
