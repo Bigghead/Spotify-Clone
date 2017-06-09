@@ -20,6 +20,7 @@ export class PlaylistComponent implements OnInit {
   imageUrl;
   tracks;
   musicData;
+  playlistArray;
 
 
   ngOnInit() {
@@ -38,7 +39,16 @@ export class PlaylistComponent implements OnInit {
 
             this.tracks = res.items;
             console.log(this.tracks);
-            this.musicPlayer.setPlaylist(res.items);
+            this.playlistArray = res.items.filter( track => track.preview_url != null)
+                                           .map( track => {
+                                             return {
+                                               id: track.id, 
+                                               preview: track.preview_url, 
+                                               image: this.imageUrl
+                                             }
+                                           })
+            
+            this.musicPlayer.setPlaylist(this.playlistArray);
 
           }
           )
@@ -49,11 +59,20 @@ export class PlaylistComponent implements OnInit {
 
 
 
-  playTrack(currentTrack, url: string) {
+  playTrack(id: string) {
 
-    this.musicPlayer.imageUrl.next(this.imageUrl);
-    this.musicPlayer.currentTrack.next(currentTrack);
-    this.musicPlayer.musicUrl.next(url);
+    return new Promise((resolve, reject) => {
+      resolve(this.playlistArray.forEach(( track , index ) => {
+        if(track.id === id){
+          resolve(index);
+        }
+      }));
+    }).then((index: number) => {
+      this.musicPlayer.currentlyPlayingIndex = index;
+
+       this.musicPlayer.imageUrl.next(this.imageUrl);
+       this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
+    })
   }
 
 

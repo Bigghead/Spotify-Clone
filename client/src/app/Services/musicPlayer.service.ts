@@ -9,10 +9,20 @@ export class MusicPlayerService{
     imageUrl = new ReplaySubject<any>();
 
     currentPlaylist = [];
+    currentlyPlayingIndex;
 
 
     setPlaylist(playlistArray){
 
-        this.currentPlaylist = playlistArray.filter( track => track.preview_url != null)
+        this.currentPlaylist = playlistArray;
     }
+
+   playNext(){
+       if(this.currentlyPlayingIndex < this.currentPlaylist.length - 1){
+           this.musicUrl.next(this.currentPlaylist[this.currentlyPlayingIndex + 1].preview);
+           this.currentlyPlayingIndex ++;
+       }
+   }
+
+    
 }

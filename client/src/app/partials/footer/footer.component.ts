@@ -39,13 +39,6 @@ export class FooterComponent implements OnInit {
                       }
                     )
 
-    this.musicPlayer.currentTrack
-                    .subscribe(
-                      res => {
-                        this.currentTrack = res;
-                      }
-                    )
-
     this.musicPlayer.imageUrl
                     .subscribe(
                       res => this.imageUrl = res
@@ -89,6 +82,11 @@ export class FooterComponent implements OnInit {
         this.progress.unsubscribe();
       }
 
+  }
+
+  playNext(){
+
+    this.musicPlayer.playNext();
   }
 
   

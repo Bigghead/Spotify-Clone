@@ -18,7 +18,7 @@
           </div>
           <div class="col m3" 
                *ngIf="track.preview_url"
-               (click)="playTrack(track, track.preview_url)">
+               (click)="playTrack(track.id)">
             <p>Play Preview</p>
           </div>
            <div class="col m3" *ngIf="!track.preview_url">
