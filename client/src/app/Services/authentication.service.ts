@@ -14,13 +14,17 @@ export class AuthService{
     hasLoggedIn = new ReplaySubject<boolean>();
     featured = new ReplaySubject<boolean>();
     moods    = new ReplaySubject<boolean>();
-    
+    successfulLogin: boolean;    
 
 
     setToken(token: string){
 
         this.token = token;
         this.user.next(true);
+    }
+
+    isLoggedIn(){
+        return this.successfulLogin;
     }
 
 

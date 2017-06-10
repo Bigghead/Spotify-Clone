@@ -45,7 +45,7 @@ export class NewReleasesComponent implements OnInit {
   passAlbumData(album, imageUrl){
 
     this.spotData.imageUrl = imageUrl;
-    this.router.navigate(["/home/album", album.id])
+    this.router.navigate(["/album", album.id])
 
   }
 

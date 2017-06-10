@@ -45,7 +45,7 @@ export class FeaturedComponent implements OnInit {
   getPlaylistData(id: string, imageUrl: string){
   
     this.spotData.imageUrl = imageUrl;
-    this.router.navigate(['home/playlist/', id]);
+    this.router.navigate(['/playlist/', id]);
 }
 
 }

@@ -1,4 +1,5 @@
-import { PlaylistComponent } from './main-container/music-list/new-releases/playlist/playlist.component';
+import { PlaylistComponent } from './main-container/music-list/playlist/playlist.component';
+import { AuthGuard } from './Services/canActivate.service';
 import { MusicPlayerService } from './Services/musicPlayer.service';
 import { TimeDurationPipe } from './Custom-Pipes/timeDuration.pipe';
 import { NewReleasesComponent } from './main-container/music-list/new-releases/new-releases.component';
@@ -27,11 +28,11 @@ import { MoodPlaylistComponent } from './main-container/music-list/moods/mood-pl
 
 const appRoutes: Routes = [
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'home', component: MainContainerComponent, children: [
+    path: '', component: MainContainerComponent,canActivateChild:[AuthGuard],  children: [
       {
-        path: 'browse', component: MusicListComponent, children: [
+        path: 'browse', component: MusicListComponent, canActivate:[AuthGuard],  children: [
           { path: 'new-releases', component: NewReleasesComponent },
           { path: 'featured', component: FeaturedComponent },
           { path: 'moods', component: MoodsComponent },
@@ -77,7 +78,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, SpotData, MusicPlayerService],
+  providers: [AuthService, SpotData, MusicPlayerService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

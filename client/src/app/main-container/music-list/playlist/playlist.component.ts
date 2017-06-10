@@ -1,5 +1,5 @@
-import { MusicPlayerService } from './../../../../Services/musicPlayer.service';
-import { SpotData } from './../../../../Services/spotifyData.service';
+import { MusicPlayerService } from './../../../Services/musicPlayer.service';
+import { SpotData } from './../../../Services/spotifyData.service';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -48,24 +48,19 @@ export class PlaylistComponent implements OnInit {
 
   playTrack(id: string) {
 
-    return new Promise((resolve, reject) => {
-
-      resolve(this.playlistArray.forEach((track, index) => {
+    this.playlistArray.forEach((track, index) => {
 
         if (track.id === id) {
 
-          resolve(index);
+          this.musicPlayer.currentlyPlayingIndex = index;
+
+          this.musicPlayer.imageUrl.next(this.playlistArray[index].image);
+          this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
 
         }
 
-      }));
-    }).then((index: number) => {
+      });
 
-      this.musicPlayer.currentlyPlayingIndex = index;
-
-      this.musicPlayer.imageUrl.next(this.playlistArray[index].image);
-      this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
-    })
   }
 
 
@@ -77,6 +72,7 @@ export class PlaylistComponent implements OnInit {
 
               this.tracks = res.items;
               console.log(this.tracks);
+
               this.playlistArray = res.items.filter(track => track.preview_url != null)
                 .map(track => {
                   return {
@@ -101,6 +97,7 @@ export class PlaylistComponent implements OnInit {
 
               this.tracks = res.items.map(track => track.track);
               console.log(this.tracks);
+              
               this.playlistArray = this.tracks.filter(track => track.preview_url != null)
                 .map(track => {
                   return {

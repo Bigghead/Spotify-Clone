@@ -21,8 +21,6 @@ export class MoodPlaylistComponent implements OnInit {
   
   ngOnInit() {
 
-    console.log('hi');
-
     this.currentRoute.params
                      .subscribe(
                        params => {
@@ -43,7 +41,7 @@ export class MoodPlaylistComponent implements OnInit {
    getPlaylistData(id: string, imageUrl: string){
   
     this.spotData.imageUrl = imageUrl;
-    this.router.navigate(['home/playlist/', id]);
+    this.router.navigate(['/playlist/', id]);
 }
 
 }

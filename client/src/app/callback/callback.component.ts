@@ -22,7 +22,8 @@ export class CallbackComponent implements OnInit {
                        (fragment) => {
                          let token: string = fragment.match(/^(.*?)&/)[1].replace('access_token=', '');
                          this.authService.setToken(token);
-                         this.router.navigate(['/home/browse/new-releases']);
+                         this.authService.successfulLogin = true;
+                         this.router.navigate(['/browse/new-releases']);
                        }
                      )
   }
