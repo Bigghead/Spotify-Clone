@@ -15,6 +15,7 @@ export class SpotData{
     newReleased: any[];
     moods: any[];
     imageUrl;
+    searchTerm: string;
 
     header = new RequestOptions({
         headers: new Headers({

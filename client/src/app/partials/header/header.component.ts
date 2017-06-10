@@ -1,3 +1,4 @@
+import { SpotData } from './../../Services/spotifyData.service';
 import { AuthService } from './../../Services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
@@ -14,7 +15,10 @@ import { Router } from '@angular/router'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private router: Router, private http: Http, private authService: AuthService) { }
+  constructor( private router: Router, 
+               private http: Http, 
+               private authService: AuthService, 
+               private spotData: SpotData) { }
 
 
   user;
@@ -47,6 +51,8 @@ export class HeaderComponent implements OnInit {
   submitForm(){
 
     const term = this.searchForm.value.searchTerm;
+    this.spotData.searchTerm = term;
+    this.router.navigate(['/search'])
   }
 
 }

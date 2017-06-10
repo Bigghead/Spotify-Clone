@@ -18,7 +18,8 @@ export class NewReleasesComponent implements OnInit {
               private router : Router) { }
 
    albums :any[];
-   header = this.spotData.header
+   header = this.spotData.header;
+   
 
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class NewReleasesComponent implements OnInit {
 
                         this.spotData.getNewReleases()
                             .subscribe(res => {
+                              console.log(res);
                               this.albums = res.albums.items;
                               this.spotData.newReleased = res.albums.items;
                             })
