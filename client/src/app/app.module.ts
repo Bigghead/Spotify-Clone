@@ -1,3 +1,4 @@
+import { PlaylistComponent } from './main-container/music-list/new-releases/playlist/playlist.component';
 import { MusicPlayerService } from './Services/musicPlayer.service';
 import { TimeDurationPipe } from './Custom-Pipes/timeDuration.pipe';
 import { NewReleasesComponent } from './main-container/music-list/new-releases/new-releases.component';
@@ -20,8 +21,6 @@ import { CallbackComponent } from './callback/callback.component';
 import { FeaturedComponent } from './main-container/music-list/featured/featured.component';
 import { MoodsComponent } from './main-container/music-list/moods/moods.component';
 import { FooterComponent } from './partials/footer/footer.component';
-import { PlaylistComponent } from './main-container/music-list/new-releases/playlist/playlist.component';
-import { UserPlaylistComponent } from './main-container/music-list/featured/user-playlist/user-playlist.component';
 import { MoodPlaylistComponent } from './main-container/music-list/moods/mood-playlist/mood-playlist.component';
 
 
@@ -69,7 +68,6 @@ const appRoutes: Routes = [
     FooterComponent,
     PlaylistComponent,
     TimeDurationPipe,
-    UserPlaylistComponent,
     MoodPlaylistComponent
 
   ],

@@ -71,7 +71,7 @@ export class PlaylistComponent implements OnInit {
 
   getAlbumTracks(id: string){
 
-     this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}/tracks`)
+     this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}/tracks?market=US`)
             .subscribe(
             res => {
 
@@ -95,7 +95,7 @@ export class PlaylistComponent implements OnInit {
 
   getPlaylistTracks(id: string){
 
-     this.spotData.getTracks(`https://api.spotify.com/v1/users/spotify/playlists/${id}/tracks`)
+     this.spotData.getTracks(`https://api.spotify.com/v1/users/spotify/playlists/${id}/tracks?market=US`)
             .subscribe(
             res => {
 
