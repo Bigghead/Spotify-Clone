@@ -19,8 +19,12 @@ input[type="search"]:hover {
 }
 
 input[type="search"]:focus { 
-    background-color:black;
-    color: white;
+    background-color:#212121;
+    color: white !important;
+}
+
+.material-icons{
+    color: white ;
 }
 
 input:-webkit-autofill{
@@ -32,3 +36,7 @@ input{
     border-radius: 2rem;
     margin-bottom: 0;
 }
+
+/*input:focus{
+ width: 100%;
+}*/

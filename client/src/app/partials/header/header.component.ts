@@ -1,5 +1,6 @@
 import { AuthService } from './../../Services/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 import { Http } from '@angular/http'
 import { Keys } from '../../../Keys'
@@ -15,18 +16,37 @@ export class HeaderComponent implements OnInit {
 
   constructor( private router: Router, private http: Http, private authService: AuthService) { }
 
+
   user;
+  searchForm
+
 
   ngOnInit() {
 
     this.authService.user.subscribe(
       (res) => this.user = res
     )
+    this.initForm();
   }
 
+
   logIn(){
+
     window.location.href = `https://accounts.spotify.com/authorize?client_id=${Keys.spotId}&response_type=token&redirect_uri=${Keys.callback}`;
-    
-}
+  }
+
+
+  initForm(){
+
+    this.searchForm = new FormGroup({
+      'searchTerm' : new FormControl(null)
+    })
+  }
+
+
+  submitForm(){
+
+    const term = this.searchForm.value.searchTerm;
+  }
 
 }
