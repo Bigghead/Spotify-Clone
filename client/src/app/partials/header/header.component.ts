@@ -17,8 +17,7 @@ export class HeaderComponent implements OnInit {
 
   constructor( private router: Router, 
                private http: Http, 
-               private authService: AuthService, 
-               private spotData: SpotData) { }
+               private authService: AuthService) { }
 
 
   user;
@@ -51,8 +50,7 @@ export class HeaderComponent implements OnInit {
   submitForm(){
 
     const term = this.searchForm.value.searchTerm;
-    this.spotData.searchTerm = term;
-    this.router.navigate(['/search'])
+    this.router.navigate(['/search', term , 'artist'])
   }
 
 }

@@ -17,6 +17,12 @@ export class SearchArtistComponent implements OnInit {
 
   ngOnInit() {
 
+    const resultType = {
+      'artist': 'artists', 
+      'album' : 'albums', 
+      'playlist': 'playlists'
+    }
+
      this.currentRoute.params
                      .subscribe(
                        (params) => {
@@ -28,7 +34,7 @@ export class SearchArtistComponent implements OnInit {
                              .subscribe(
                                res => {
                                  console.log(res);
-                                 this.results = res.artists.items
+                                 this.results = res[resultType[type]].items
                                                    .filter(artist => artist.images.length > 0);
                                }
                              )

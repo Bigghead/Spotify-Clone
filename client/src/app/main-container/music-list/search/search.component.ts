@@ -9,8 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private currentRoute: ActivatedRoute,
-              private spotData: SpotData, 
+  constructor(private currentRoute: ActivatedRoute, 
               private router: Router) { }
 
 
@@ -18,8 +17,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
 
-    this.term = this.spotData.searchTerm;
-    this.router.navigate(['/search', this.term, 'artist']);
+    // this.router.navigate(['/search', this.term, 'artist']);
   }
 
 }
