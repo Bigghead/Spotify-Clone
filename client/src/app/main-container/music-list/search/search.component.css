@@ -1,0 +1,15 @@
+
+
+.tabs.tabs-fixed-width{
+    background-color: transparent;
+}
+
+.active {
+      border-bottom: solid 2px #1db954;
+      display: inline;
+      padding-bottom: 4px;
+}
+
+.tabs .tab a:hover, .tabs .tab a{
+    color: white;
+}

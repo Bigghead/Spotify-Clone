@@ -1,3 +1,4 @@
+import { SearchTrackComponent } from './main-container/music-list/search/search-track/search-track.component';
 import { PlaylistComponent } from './main-container/music-list/playlist/playlist.component';
 import { AuthGuard } from './Services/canActivate.service';
 import { MusicPlayerService } from './Services/musicPlayer.service';
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
 
       { path: 'view/:mood', component: MoodPlaylistComponent },
       { path: 'search', component: SearchComponent , children: [
+        { path: ':searchTerm/track' ,component: SearchTrackComponent },        
         { path: ':searchTerm/:searchType' ,component: SearchArtistComponent }
       ]}, 
       { path: ':albumOrPlaylist/:albumId', component: PlaylistComponent }
@@ -76,7 +78,8 @@ const appRoutes: Routes = [
     TimeDurationPipe,
     MoodPlaylistComponent,
     SearchComponent,
-    SearchArtistComponent
+    SearchArtistComponent,
+    SearchTrackComponent
 
   ],
   imports: [

@@ -1,3 +1,7 @@
 a{
     cursor: pointer;
 }
+
+.artist-info{
+    min-height: 140px;
+}

@@ -5,23 +5,23 @@
 
   <div class="col m9">
     <div class="row">
-      <div class="col m12" *ngFor="let track of tracks; let i = index">
+      <div class="col s12" *ngFor="let track of tracks; let i = index">
         <div class="row trackInfo white-text">
-          <div class="col m2">
+          <div class="col s2">
             <p>{{ i + 1 }}</p>
           </div>
-          <div class="col m5">
+          <div class="col s5">
             <p>{{ track.name }}</p>
           </div>
-          <div class="col m2">
+          <div class="col s2">
             <p>{{ track.duration_ms | formatDuration}}</p>
           </div>
-          <div class="col m3" 
+          <div class="col s3" 
                *ngIf="track.preview_url"
                (click)="playTrack(track.id)">
             <p>Play Preview</p>
           </div>
-           <div class="col m3" *ngIf="!track.preview_url">
+           <div class="col s3" *ngIf="!track.preview_url">
             <p>No Preview</p>
           </div>
         </div>

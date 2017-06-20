@@ -15,10 +15,10 @@ export class MusicListComponent implements OnInit {
 
   constructor(private authService: AuthService, private spotData: SpotData) { }
 
+
   hasLoggedIn: boolean = false;
+  isActive: string = 'New';
   
-
-
 
   ngOnInit() {
 
@@ -30,6 +30,12 @@ export class MusicListComponent implements OnInit {
                         this.hasLoggedIn = res;
                       })
 
+  }
+
+
+  makeActive(tab: string){
+
+    this.isActive = tab;
   }
 
 }

@@ -1,22 +1,24 @@
- <div class="music-list" *ngIf='hasLoggedIn'>
-   <div class="row">
+<div class="music-list" *ngIf='hasLoggedIn'>
+  <div class="row">
     <div class="col s12">
-      <ul class="tabs tabs-fixed-width ">
-        <li class="tab col s3"><a [routerLink]="['/browse/new-releases']" class='active'>New Releases</a></li>
-        <li class="tab col s3"><a [routerLink]="['/browse/featured']">Featured</a></li>
-        <li class="tab col s3"><a [routerLink]="['/browse/moods']">Moods</a></li>
+      <ul class="tabs tabs-fixed-width music-tabs">
+        <li class="tab col s3">
+          <a [routerLink]="['/browse/new-releases']" (click)="makeActive('New')" [ngStyle]="{ active : isActive === 'New' }">New Releases</a>
+        </li>
+        <li class="tab col s3">
+          <a [routerLink]="['/browse/featured']" (click)="makeActive('Featured')" [ngStyle]="{ active : isActive === 'Featured' }">Featured</a>
+        </li>
+        <li class="tab col s3">
+          <a [routerLink]="['/browse/moods']" (click)="makeActive('Moods')" [ngStyle]="{ active : isActive === 'Moods' }">Moods</a>
+        </li>
       </ul>
     </div>
-   
-      <!--<app-new-releases></app-new-releases>
+
+    <!--<app-new-releases></app-new-releases>
       <app-featured></app-featured>
       <app-moods></app-moods>-->
-      <router-outlet></router-outlet>
-      
+    <router-outlet></router-outlet>
+
 
   </div>
- </div>
-
-
-
- 
+</div>

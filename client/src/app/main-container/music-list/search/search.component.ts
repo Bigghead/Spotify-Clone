@@ -12,12 +12,21 @@ export class SearchComponent implements OnInit {
   constructor(private currentRoute: ActivatedRoute, 
               private router: Router) { }
 
-
+  
+  isActive: string = 'Artists';
   term: string;
 
   ngOnInit() {
 
+    this.isActive = 'Artists';
+
     // this.router.navigate(['/search', this.term, 'artist']);
+  }
+
+
+  makeActive(tab: string){
+
+    this.isActive = tab;
   }
 
 }

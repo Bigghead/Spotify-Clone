@@ -12,9 +12,14 @@
     color: white;
 }
 
-.tabs .indicator {
-    background-color:#1ed760 !important;
-} 
+
+.active {
+      border-bottom: solid 2px #1db954;
+      display: inline;
+      padding-bottom: 4px;
+}
+
+
 
 
 /*.tabs.indicator {

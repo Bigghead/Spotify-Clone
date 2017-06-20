@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs/Subject';
 import { SpotData } from './../../../../Services/spotifyData.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -41,5 +42,8 @@ export class SearchArtistComponent implements OnInit {
                        }
                      )
   }
+
+
+ 
 
 }
