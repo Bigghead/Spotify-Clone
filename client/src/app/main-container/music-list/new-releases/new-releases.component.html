@@ -5,14 +5,12 @@
         <div class="card">
           <div class="card-image">
             <img src="{{ album.images[0].url }}" class="">
-            <div class="">
-              <div class=''><span class="material-icons">play-arrow</span></div>
-            </div>
+            
           </div>
           <div class="card-content artist-info">
-            <p>{{ album.name }}</p>
+            <p class='album-name'>{{ album.name }}</p>
             <hr>
-            <p>{{ album.artists[0].name}}</p>
+            <p class='hide-on-med-and-down'>{{ album.artists[0].name}}</p>
           </div>
         </div>
       </a>

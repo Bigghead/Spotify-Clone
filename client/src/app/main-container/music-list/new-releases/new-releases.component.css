@@ -2,49 +2,12 @@ a{
     cursor: pointer;
 }
 
-.card-image{
-    position: relative;
-    
-}
 
-/*.image {
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: .5s ease;
-  backface-visibility: hidden;
-}*/
+ .album-name{
+     text-overflow: ellipsis;
+ }
 
-.overlay {
-   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
-}
-
-.card-image:hover .overlay {
-  opacity: 0.7;
-}
-
-
-
-.text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
 
 .artist-info{
-    min-height: 140px;
+    height: 150px;
 }

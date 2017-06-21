@@ -43,12 +43,12 @@ const appRoutes: Routes = [
         ]
       },
 
-      { path: 'view/:mood', component: MoodPlaylistComponent },
-      { path: 'search', component: SearchComponent , children: [
+      { path: 'view/:mood',canActivate: [AuthGuard],  component: MoodPlaylistComponent },
+      { path: 'search', component: SearchComponent ,canActivateChild: [AuthGuard] , children: [
         { path: ':searchTerm/track' ,component: SearchTrackComponent },        
         { path: ':searchTerm/:searchType' ,component: SearchArtistComponent }
       ]}, 
-      { path: ':albumOrPlaylist/:albumId', component: PlaylistComponent }
+      { path: ':albumOrPlaylist/:albumId', canActivate: [AuthGuard], component: PlaylistComponent }
       // { path: ':playlist/:albumId', component: PlaylistComponent },
 
 

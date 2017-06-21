@@ -15,7 +15,6 @@ export class SpotData{
     newReleased: any[];
     moods: any[];
     imageUrl;
-    activeTab = new Subject<string>();
 
     header = new RequestOptions({
         headers: new Headers({
