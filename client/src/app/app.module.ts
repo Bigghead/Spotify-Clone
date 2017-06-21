@@ -1,3 +1,4 @@
+import { SearchKeywordComponent } from './main-container/music-list/search/search-keyword/search-keyword.component';
 import { SearchService } from './Services/search.service';
 import { SearchTrackComponent } from './main-container/music-list/search/search-track/search-track.component';
 import { PlaylistComponent } from './main-container/music-list/playlist/playlist.component';
@@ -26,7 +27,7 @@ import { MoodsComponent } from './main-container/music-list/moods/moods.componen
 import { FooterComponent } from './partials/footer/footer.component';
 import { MoodPlaylistComponent } from './main-container/music-list/moods/mood-playlist/mood-playlist.component';
 import { SearchComponent } from './main-container/music-list/search/search.component';
-import { SearchArtistComponent } from './main-container/music-list/search/search-artist/search-artist.component';
+import { ArtistInfoComponent } from './main-container/music-list/artist-info/artist-info.component';
 
 
 
@@ -46,8 +47,9 @@ const appRoutes: Routes = [
       { path: 'view/:mood',canActivate: [AuthGuard],  component: MoodPlaylistComponent },
       { path: 'search', component: SearchComponent ,canActivateChild: [AuthGuard] , children: [
         { path: ':searchTerm/track' ,component: SearchTrackComponent },        
-        { path: ':searchTerm/:searchType' ,component: SearchArtistComponent }
+        { path: ':searchTerm/:searchType' ,component: SearchKeywordComponent }
       ]}, 
+      { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },      
       { path: ':albumOrPlaylist/:albumId', canActivate: [AuthGuard], component: PlaylistComponent }
       // { path: ':playlist/:albumId', component: PlaylistComponent },
 
@@ -79,8 +81,9 @@ const appRoutes: Routes = [
     TimeDurationPipe,
     MoodPlaylistComponent,
     SearchComponent,
-    SearchArtistComponent,
-    SearchTrackComponent
+    SearchKeywordComponent,
+    SearchTrackComponent,
+    ArtistInfoComponent
 
   ],
   imports: [

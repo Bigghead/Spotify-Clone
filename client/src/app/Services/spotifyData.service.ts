@@ -61,4 +61,13 @@ export class SpotData{
                          .map(res => res.json())
                          .catch(err => Observable.throw(err))
      }
+
+
+     getArtistInfo(url: string){
+
+         return this.http.get(url, this.header)
+                         .map(res => res.json())
+                         .catch(err => Observable.throw(err))
+     }
+
 }

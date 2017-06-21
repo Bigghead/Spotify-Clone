@@ -5,10 +5,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-artist',
-  templateUrl: './search-artist.component.html',
-  styleUrls: ['./search-artist.component.css']
+  templateUrl: './search-keyword.component.html',
+  styleUrls: ['./search-keyword.component.css']
 })
-export class SearchArtistComponent implements OnInit {
+export class SearchKeywordComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, 
               private spotData: SpotData, 
