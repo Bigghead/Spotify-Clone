@@ -1,6 +1,7 @@
 <div class="row">
         <div class="col l4 m3 s12" *ngFor='let data of results'>
           <!--<ng-container *ngIf='data.images'>-->
+            <a (click)="getTracks(data.images[0].url, data.id)">
              <div class="card">
             <div class="card-image">
               <img src="{{ data.images[0].url }}" class='responsive-img'>
@@ -14,6 +15,7 @@
               <a href="#">This is a link</a>
             </div>-->
           </div>
+          </a>
           <!--</ng-container>-->
          
         </div>

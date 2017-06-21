@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs/Subject';
 import { SpotData } from './../../../../Services/spotifyData.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,10 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class SearchArtistComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, 
-              private spotData: SpotData) { }
+              private spotData: SpotData, 
+              private router: Router) { }
 
 
   results; 
+  searchType: string;
 
   ngOnInit() {
 
@@ -31,6 +33,7 @@ export class SearchArtistComponent implements OnInit {
                          const term = params['searchTerm'];
                          const type = params['searchType'];
 
+                         this.searchType = type;
 
                          this.spotData.getTracks(`https://api.spotify.com/v1/search?q=${term}&type=${type}`)
                              .subscribe(
@@ -45,6 +48,10 @@ export class SearchArtistComponent implements OnInit {
   }
 
 
- 
+  getTracks(url: string, id: string){
+
+    this.spotData.imageUrl = url;
+    this.router.navigate([this.searchType, id ])
+  }
 
 }
