@@ -2,19 +2,19 @@
   <div class="col s12">
     <ul class="tabs tabs-fixed-width music-tabs">
       <li class="tab col s3">
-        <a [routerLink]="['/search/adele/artist']" (click)="makeActive('Artists')"[ngClass]="{ active : isActive === 'Artists'}">Artists</a>
+        <a [routerLink]="['/search', searchService.searchTerm, 'artist']" (click)="makeActive('Artists')"[ngClass]="{ active : isActive === 'Artists'}">Artists</a>
       </li>
 
       <li class="tab col s3">
-        <a [routerLink]="['/search/adele/track']" (click)="makeActive('Tracks')"[ngClass]="{ active : isActive === 'Tracks'}">Tracks</a>
+        <a [routerLink]="['/search', searchService.searchTerm, 'track']" (click)="makeActive('Tracks')"[ngClass]="{ active : isActive === 'Tracks'}">Tracks</a>
       </li>
 
       <li class="tab col s3">
-        <a [routerLink]="['/search/adele/album']" (click)="makeActive('Albums')"[ngClass]="{ active : isActive === 'Albums'}">Albums</a>
+        <a [routerLink]="['/search', searchService.searchTerm, 'album']" (click)="makeActive('Albums')"[ngClass]="{ active : isActive === 'Albums'}">Albums</a>
       </li>
 
       <li class="tab col s3">
-        <a [routerLink]="['/search/adele/playlist']" (click)="makeActive('Playlists')"[ngClass]="{ active : isActive === 'Playlists'}">Playlists</a>
+        <a [routerLink]="['/search', searchService.searchTerm, 'playlist']" (click)="makeActive('Playlists')"[ngClass]="{ active : isActive === 'Playlists'}">Playlists</a>
       </li>
 
     </ul>

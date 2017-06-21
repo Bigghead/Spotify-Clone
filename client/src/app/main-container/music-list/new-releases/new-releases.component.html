@@ -4,7 +4,10 @@
       <a (click)="passAlbumData(album, album.images[0].url)">
         <div class="card">
           <div class="card-image">
-            <img src="{{ album.images[0].url }}">
+            <img src="{{ album.images[0].url }}" class="">
+            <div class="">
+              <div class=''><span class="material-icons">play-arrow</span></div>
+            </div>
           </div>
           <div class="card-content artist-info">
             <p>{{ album.name }}</p>

@@ -1,6 +1,8 @@
+import { SearchService } from './../../../Services/search.service';
 import { SpotData } from './../../../Services/spotifyData.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-search',
@@ -10,7 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, 
-              private router: Router) { }
+              private router: Router, 
+              private searchService: SearchService) { }
 
   
   isActive: string = 'Artists';
@@ -19,8 +22,9 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
 
     this.isActive = 'Artists';
-
-    // this.router.navigate(['/search', this.term, 'artist']);
+    this.searchService.activeSearchTab
+        .subscribe(res => this.isActive = res)
+   
   }
 
 

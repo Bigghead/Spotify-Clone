@@ -1,3 +1,4 @@
+import { SearchService } from './../../Services/search.service';
 import { SpotData } from './../../Services/spotifyData.service';
 import { AuthService } from './../../Services/authentication.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   constructor( private router: Router, 
                private http: Http, 
-               private authService: AuthService) { }
+               private authService: AuthService, 
+               private searchService: SearchService) { }
 
 
   user;
@@ -50,6 +52,8 @@ export class HeaderComponent implements OnInit {
   submitForm(){
 
     const term = this.searchForm.value.searchTerm;
+    this.searchService.searchTerm = (term);
+    this.searchService.activeSearchTab.next('Artists');
     this.router.navigate(['/search', term , 'artist'])
   }
 

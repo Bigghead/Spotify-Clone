@@ -31,6 +31,7 @@ export class SearchArtistComponent implements OnInit {
                          const term = params['searchTerm'];
                          const type = params['searchType'];
 
+
                          this.spotData.getTracks(`https://api.spotify.com/v1/search?q=${term}&type=${type}`)
                              .subscribe(
                                res => {

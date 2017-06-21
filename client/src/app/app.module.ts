@@ -1,3 +1,4 @@
+import { SearchService } from './Services/search.service';
 import { SearchTrackComponent } from './main-container/music-list/search/search-track/search-track.component';
 import { PlaylistComponent } from './main-container/music-list/playlist/playlist.component';
 import { AuthGuard } from './Services/canActivate.service';
@@ -89,7 +90,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, SpotData, MusicPlayerService, AuthGuard],
+  providers: [AuthService, SpotData, MusicPlayerService, AuthGuard, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
