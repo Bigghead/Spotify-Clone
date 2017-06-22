@@ -17,15 +17,15 @@
             <p>{{ track.duration_ms | formatDuration}}</p>
           </div>
           <div class="col s3" 
-               *ngIf="track.preview_url && paused !== i"
+               *ngIf="track.preview_url && currentIndex !== i"
                (click)="playTrack(track.id, i)"
                (click)="makeActive(i)">
             <p>Play Preview</p>
           </div>
            <div class="col s3" 
-               *ngIf="track.preview_url && paused === i "
-               (click)="pauseSong(i)">
-            <p>Pause</p>
+               *ngIf="track.preview_url && currentIndex === i "
+               >
+            <p>Playing</p>
           </div>
            <div class="col s3" *ngIf="!track.preview_url">
             <p>No Preview</p>

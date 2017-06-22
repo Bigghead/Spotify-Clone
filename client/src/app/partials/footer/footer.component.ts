@@ -28,15 +28,6 @@ export class FooterComponent implements OnInit {
       this.clearSong();
     }
 
-    this.musicPlayer.pauseSong
-                    .subscribe(
-                      res => this.pauseSong()
-                    )
-
-    this.musicPlayer.playPausedSong
-                    .subscribe(
-                      res => this.playSong()
-                    )
 
     this.musicPlayer.musicUrl
                     .subscribe(
@@ -71,7 +62,6 @@ export class FooterComponent implements OnInit {
                                  res => this.progressBar += 1
                                )
                  this.playing = true;
-                 this.musicPlayer.playCurrent.next(this.musicPlayer.currentlyPlayingIndex);
               })
               .catch(err => console.log(err));
    
@@ -83,7 +73,6 @@ export class FooterComponent implements OnInit {
     this.audio.pause();
     this.progress.unsubscribe();
     this.playing = false;
-    this.musicPlayer.pauseCurrent.next(this.musicPlayer.currentlyPlayingIndex);
 
   }
 
