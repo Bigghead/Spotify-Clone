@@ -21,10 +21,14 @@ export class PlaylistComponent implements OnInit {
   tracks;
   musicData;
   playlistArray;
+  currentIndex;
+  paused: number;
+  audio;
 
 
   ngOnInit() {
 
+    this.audio = document.querySelector('#audio');
     this.imageUrl = this.spotData.imageUrl;
 
     this.currentRoute.params.subscribe(
@@ -46,8 +50,12 @@ export class PlaylistComponent implements OnInit {
 
 
 
-  playTrack(id: string) {
+  playTrack(id: string, i:number) {
 
+    if(this.paused === i){ 
+      return this.musicPlayer.playPausedSong.next('hi')
+    }
+    this.currentIndex = i;
     this.playlistArray.forEach((track, index) => {
 
         if (track.id === id) {
@@ -111,6 +119,20 @@ export class PlaylistComponent implements OnInit {
 
             }
             )
+  }
+
+
+  makeActive(index: number){
+
+    this.currentIndex = index;
+  }
+
+
+  pauseSong(i: number){
+      
+    this.currentIndex = -1;
+    this.musicPlayer.pauseSong.next('hi');
+    this.paused = i;
   }
 
 

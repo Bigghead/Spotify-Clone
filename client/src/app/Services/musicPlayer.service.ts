@@ -7,6 +7,8 @@ export class MusicPlayerService{
     musicUrl = new ReplaySubject<string>();
     currentTrack = new ReplaySubject<any>();
     imageUrl = new ReplaySubject<any>();
+    pauseSong = new ReplaySubject<any>();
+    playPausedSong = new ReplaySubject<any>();
 
     currentPlaylist = [];
     currentlyPlayingIndex;

@@ -28,6 +28,16 @@ export class FooterComponent implements OnInit {
       this.clearSong();
     }
 
+    this.musicPlayer.pauseSong
+                    .subscribe(
+                      res => this.pauseSong()
+                    )
+
+    this.musicPlayer.playPausedSong
+                    .subscribe(
+                      res => this.playSong()
+                    )
+
     this.musicPlayer.musicUrl
                     .subscribe(
                       res => {
