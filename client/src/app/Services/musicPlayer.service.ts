@@ -7,8 +7,13 @@ export class MusicPlayerService{
     musicUrl = new ReplaySubject<string>();
     currentTrack = new ReplaySubject<any>();
     imageUrl = new ReplaySubject<any>();
+    //from playlist to footer
     pauseSong = new ReplaySubject<any>();
     playPausedSong = new ReplaySubject<any>();
+
+    //from footer to playlist
+    pauseCurrent = new ReplaySubject<any>();
+    playCurrent  = new ReplaySubject<any>();
     currentIndex = new ReplaySubject<any>();
     currentPlaylist = [];
     currentlyPlayingIndex;

@@ -24,6 +24,7 @@ export class PlaylistComponent implements OnInit {
   currentIndex;
   paused: number;
   audio;
+  pausedFromFooter : boolean = false;
 
 
   ngOnInit() {
@@ -32,6 +33,12 @@ export class PlaylistComponent implements OnInit {
 
     this.musicPlayer.currentIndex
                     .subscribe( res => this.currentIndex = res)
+
+    this.musicPlayer.pauseCurrent
+                    .subscribe( res => this.paused = -1 )
+
+    this.musicPlayer.playCurrent
+                    .subscribe( res => this.paused = res)
 
     this.currentRoute.params.subscribe(
       (params) => {
@@ -54,7 +61,7 @@ export class PlaylistComponent implements OnInit {
 
   playTrack(id: string, i:number) {
 
-    if(this.paused === i){ 
+    if(this.paused === -1){ 
       return this.musicPlayer.playPausedSong.next('hi')
     }
     this.currentIndex = i;
@@ -127,14 +134,15 @@ export class PlaylistComponent implements OnInit {
   makeActive(index: number){
 
     this.currentIndex = index;
+    this.paused = index;
   }
 
 
   pauseSong(i: number){
       
-    this.currentIndex = -1;
+    this.paused = -1;
     this.musicPlayer.pauseSong.next('hi');
-    this.paused = i;
+    // this.currentIndex = i;
   }
 
 
