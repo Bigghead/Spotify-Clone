@@ -49,7 +49,8 @@ const appRoutes: Routes = [
         { path: ':searchTerm/track' ,component: SearchTrackComponent },        
         { path: ':searchTerm/:searchType' ,component: SearchKeywordComponent }
       ]}, 
-      { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },      
+      { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },     
+      { path: ':albumOrPlaylist/:albumId/:ownerId', canActivate: [AuthGuard], component: PlaylistComponent },  
       { path: ':albumOrPlaylist/:albumId', canActivate: [AuthGuard], component: PlaylistComponent }
       // { path: ':playlist/:albumId', component: PlaylistComponent },
 

@@ -43,6 +43,10 @@ export class PlaylistComponent implements OnInit, OnDestroy {
         } else if (params['albumOrPlaylist'] === 'playlist'){
 
           const id = params['albumId'];
+          
+          if(params['ownerId']){
+            return this.getOwnerPlaylist(id, params['ownerId'])
+          }
           this.getPlaylistTracks(id);
         }
       }
@@ -102,8 +106,33 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
 
   getPlaylistTracks(id: string){
-
+    //spotify:user:1238319959:playlist:7tVcSv0g7RxVcYcOhNwsgP
      this.spotData.getTracks(`https://api.spotify.com/v1/users/spotify/playlists/${id}/tracks?market=US`)
+            .subscribe(
+            res => {
+
+              this.tracks = res.items.map(track => track.track);
+              console.log(this.tracks);
+              
+              this.playlistArray = this.tracks.filter(track => track.preview_url != null)
+                .map(track => {
+                  return {
+                    id: track.id,
+                    preview: track.preview_url,
+                    image: track.album.images[0].url
+                  }
+                })
+
+              this.musicPlayer.setPlaylist(this.playlistArray);
+
+            }
+            )
+  }
+
+
+  getOwnerPlaylist(playlistId, ownerId){
+
+     this.spotData.getTracks(`https://api.spotify.com/v1/users/${ownerId}/playlists/${playlistId}/tracks?market=US`)
             .subscribe(
             res => {
 

@@ -54,4 +54,10 @@ export class SearchKeywordComponent implements OnInit {
     this.router.navigate([this.searchType, id ])
   }
 
+  getPlaylistTracks(image: string, ownerId:string, id: string){
+
+    this.spotData.imageUrl = image;
+    this.router.navigate([this.searchType, id, ownerId ])
+  }
+
 }
