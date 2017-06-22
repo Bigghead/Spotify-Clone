@@ -2,14 +2,14 @@ import { MusicPlayerService } from './../../../Services/musicPlayer.service';
 import { SpotData } from './../../../Services/spotifyData.service';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-playlist',
   templateUrl: './playlist.component.html',
   styleUrls: ['./playlist.component.css']
 })
-export class PlaylistComponent implements OnInit {
+export class PlaylistComponent implements OnInit, OnDestroy {
 
   constructor(private currentRoute: ActivatedRoute,
     private http: Http,
@@ -23,15 +23,14 @@ export class PlaylistComponent implements OnInit {
   playlistArray;
   currentIndex;
   audio;
+  currentlyPlaying;
 
 
   ngOnInit() {
 
     this.imageUrl = this.spotData.imageUrl;
 
-    this.musicPlayer.currentIndex
-                    .subscribe( res => this.currentIndex = res)
-
+    this.getActiveTrack();
 
     this.currentRoute.params.subscribe(
       (params) => {
@@ -48,6 +47,12 @@ export class PlaylistComponent implements OnInit {
         }
       }
     )
+  }
+
+
+  ngOnDestroy(){
+
+    if(this.currentlyPlaying){this.currentlyPlaying.unsubscribe();}
   }
 
 
@@ -127,7 +132,12 @@ export class PlaylistComponent implements OnInit {
   }
 
 
- 
+ getActiveTrack(){
+
+
+   this.currentlyPlaying =  this.musicPlayer.currentIndex
+                    .subscribe( res => this.currentIndex = res)
+ }
 
 
 }

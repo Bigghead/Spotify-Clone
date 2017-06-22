@@ -26,7 +26,6 @@ export class MusicListComponent implements OnInit {
                     .subscribe(
 
                       res => {
-                        console.log(res);
                         this.hasLoggedIn = res;
                       })
 
