@@ -28,8 +28,10 @@ export class PlaylistComponent implements OnInit {
 
   ngOnInit() {
 
-    this.audio = document.querySelector('#audio');
     this.imageUrl = this.spotData.imageUrl;
+
+    this.musicPlayer.currentIndex
+                    .subscribe( res => this.currentIndex = res)
 
     this.currentRoute.params.subscribe(
       (params) => {
