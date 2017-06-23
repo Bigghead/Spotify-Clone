@@ -26,6 +26,7 @@ export class FooterComponent implements OnInit {
     this.audio = document.querySelector('#audio');
     this.audio.onended = () => {
       this.clearSong();
+      this.playNext();
     }
 
 

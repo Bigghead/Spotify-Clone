@@ -62,7 +62,7 @@ export class SearchKeywordComponent implements OnInit {
 
   getArtist(id: string){
 
-    this.router.navigate(['/artist', id])
+    this.router.navigate(['/search', 'artist', id])
   }
 
 }
