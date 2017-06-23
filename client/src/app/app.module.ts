@@ -45,11 +45,11 @@ const appRoutes: Routes = [
       },
 
       { path: 'view/:mood',canActivate: [AuthGuard],  component: MoodPlaylistComponent },
-      { path: 'search', component: SearchComponent ,canActivateChild: [AuthGuard] , children: [
+      { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },     
+      { path: 'search', component: SearchComponent ,canActivate: [AuthGuard] , children: [
         { path: ':searchTerm/track' ,component: SearchTrackComponent },        
         { path: ':searchTerm/:searchType' ,component: SearchKeywordComponent }
       ]}, 
-      { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },     
       { path: ':albumOrPlaylist/:albumId/:ownerId', canActivate: [AuthGuard], component: PlaylistComponent },  
       { path: ':albumOrPlaylist/:albumId', canActivate: [AuthGuard], component: PlaylistComponent }
       // { path: ':playlist/:albumId', component: PlaylistComponent },

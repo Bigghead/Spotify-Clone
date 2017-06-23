@@ -1,3 +1,43 @@
-<p>
-  artist-info works!
-</p>
+<div class=" center-align">
+  <div class="">
+    <img src="{{ artistInfo.images[0].url }}" class='artist-image'alt="">
+    <h3>{{ artistInfo.name }}</h3>
+  </div>
+  <br>
+
+  <!--<div class="row center-align">
+    <h4>Popular Tracks</h4>
+    <br>
+    <br>
+    <div class="col s12" *ngFor="let track of artistTracks; let i = index">
+      <div class="row">
+         <div class="col s2">
+        <p>{{ i + 1 }}</p>
+      </div>
+
+      <div class="col s5">
+        <p>{{ track.name }}</p>
+      </div>
+
+      <div class="col s2">
+        <p>{{ track.duration_ms | formatDuration}}</p>
+      </div>
+      </div>
+    </div>
+  </div>-->
+
+  <h3>Albums</h3>
+  <div class="row">
+    <div class="col l4 m6 s12" *ngFor="let album of artistAlbums">
+      <div class="card">
+          <div class="card-image">
+            <img src="{{ album.images[0].url }}" class="">
+            
+          </div>
+          <div class="card-content artist-info">
+            <p class='album-name'>{{ album.name }}</p>
+          </div>
+    </div>
+  </div>
+
+</div>

@@ -59,7 +59,10 @@ export class SpotData{
 
          return this.http.get(url, this.header)
                          .map(res => res.json())
-                         .catch(err => Observable.throw(err))
+                         .catch(err => {
+                             this.authService.successfulLogin = false;
+                             return Observable.throw(err)
+                         })
      }
 
 

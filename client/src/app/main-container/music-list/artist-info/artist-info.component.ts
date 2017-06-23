@@ -14,6 +14,7 @@ export class ArtistInfoComponent implements OnInit {
 
   artistInfo;
   artistTracks;
+  artistAlbums: any[] = [];
 
   ngOnInit() {
 
@@ -23,6 +24,7 @@ export class ArtistInfoComponent implements OnInit {
           const artistId = params['artistId'];
           this.getInfo(artistId);
           this.getArtistTracks(artistId);
+          this.getArtistAlbums(artistId);
           
         })
   }
@@ -45,8 +47,29 @@ export class ArtistInfoComponent implements OnInit {
     return this.spotData.getTracks(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`)
                .subscribe(
                  res => {
-                   this.artistTracks = res;
+                   this.artistTracks = res.tracks
+                                          .filter( track => track.preview_url != null);
                    console.log(res);
+                 }
+               )
+  }
+
+
+  getArtistAlbums(id: string){
+
+    return this.spotData.getTracks(`https://api.spotify.com/v1/artists/${id}/albums`)
+               .subscribe(
+                 res => {
+
+                   const albumNames = {};
+                   res.items.forEach( album => {
+                     
+                     if( !albumNames[album.name] && album.album_type !== 'single' ){
+                       albumNames[album.name] = album.name;
+                       this.artistAlbums.push(album);
+                     }
+                   })
+                   console.log(this.artistAlbums);
                  }
                )
   }

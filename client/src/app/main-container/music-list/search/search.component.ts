@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
               private searchService: SearchService) { }
 
   
-  isActive: string = 'Artists';
+  isActive: string;
   term: string;
 
   ngOnInit() {
