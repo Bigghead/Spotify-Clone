@@ -1,6 +1,5 @@
 import { SearchKeywordComponent } from './main-container/music-list/search/search-keyword/search-keyword.component';
 import { SearchService } from './Services/search.service';
-import { SearchTrackComponent } from './main-container/music-list/search/search-track/search-track.component';
 import { PlaylistComponent } from './main-container/music-list/playlist/playlist.component';
 import { AuthGuard } from './Services/canActivate.service';
 import { MusicPlayerService } from './Services/musicPlayer.service';
@@ -47,7 +46,7 @@ const appRoutes: Routes = [
       { path: 'view/:mood',canActivate: [AuthGuard],  component: MoodPlaylistComponent },
       { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },     
       { path: 'search', component: SearchComponent ,canActivate: [AuthGuard] , children: [
-        { path: ':searchTerm/track' ,component: SearchTrackComponent },        
+        { path: ':searchTerm/track/:artist' ,component: PlaylistComponent },        
         { path: ':searchTerm/:searchType' ,component: SearchKeywordComponent }
       ]}, 
       { path: ':albumOrPlaylist/:albumId/:ownerId', canActivate: [AuthGuard], component: PlaylistComponent },  
@@ -83,7 +82,6 @@ const appRoutes: Routes = [
     MoodPlaylistComponent,
     SearchComponent,
     SearchKeywordComponent,
-    SearchTrackComponent,
     ArtistInfoComponent
 
   ],

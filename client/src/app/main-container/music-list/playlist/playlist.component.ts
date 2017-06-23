@@ -25,6 +25,8 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   audio;
   currentlyPlaying;
 
+  artistPlaylist: boolean = false;
+
 
   ngOnInit() {
 
@@ -35,11 +37,20 @@ export class PlaylistComponent implements OnInit, OnDestroy {
     this.currentRoute.params.subscribe(
       (params) => {
 
+        //if coming for an artist's searched tracks
+        if(params['artist']){ 
+          this.artistPlaylist = true;
+          const term = params['searchTerm'];
+          return this.getArtistTracks(term);
+         }
+
+         //if coming for an album's playlist
         if (params['albumOrPlaylist'] === 'album') {
 
           const albumId = params['albumId'];
           this.getAlbumTracks(albumId);
          
+         //if coming from spotify's featured playlists
         } else if (params['albumOrPlaylist'] === 'playlist'){
 
           const id = params['albumId'];
@@ -152,6 +163,30 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
             }
             )
+  }
+
+
+  getArtistTracks(term: string){
+
+     return this.spotData.getTracks(`https://api.spotify.com/v1/search?q=${term}&type=track`)
+                       .subscribe(
+                          res => {
+                            this.tracks = res.tracks.items.filter(track => {
+                              return track.preview_url != null;
+                            });
+                            console.log(this.tracks)
+
+                            this.playlistArray = this.tracks.filter(track => track.preview_url != null)
+                             .map(track => {
+                              return {
+                               id: track.id,
+                               preview: track.preview_url,
+                               image: track.album.images[0].url
+                              }
+                            })
+
+                        this.musicPlayer.setPlaylist(this.playlistArray);
+       })
   }
 
 
