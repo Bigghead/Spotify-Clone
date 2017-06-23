@@ -5,7 +5,9 @@
     <div class="col s3" >
       <div class="row" [hidden]="!imageUrl">
         <div class="col s4" >
-          <img src="{{ imageUrl }}" class='small-album-image responsive-img' alt="">
+          <a [routerLink]="[playlistUrl]">
+            <img src="{{ imageUrl }}" class='small-album-image responsive-img' alt="">
+          </a>
         </div>
       </div>
     </div>

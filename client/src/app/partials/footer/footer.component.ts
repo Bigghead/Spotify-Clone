@@ -19,6 +19,7 @@ export class FooterComponent implements OnInit {
   musicUrl :string;
   currentTrack;
   imageUrl;
+  playlistUrl;
 
 
   ngOnInit() {
@@ -29,6 +30,10 @@ export class FooterComponent implements OnInit {
       this.playNext();
     }
 
+    this.musicPlayer.playlistUrl
+                    .subscribe(
+                      res => this.playlistUrl = res
+                    )
 
     this.musicPlayer.musicUrl
                     .subscribe(

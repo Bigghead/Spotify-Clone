@@ -17,7 +17,8 @@ export class PlaylistComponent implements OnInit, OnDestroy {
     private musicPlayer: MusicPlayerService) { }
 
 
-  imageUrl;
+  imageUrl: string;
+  playlistUrl: string;
   tracks;
   musicData;
   playlistArray;
@@ -49,14 +50,17 @@ export class PlaylistComponent implements OnInit, OnDestroy {
         if (params['albumOrPlaylist'] === 'album') {
 
           const albumId = params['albumId'];
+          this.playlistUrl = `album/${albumId}`;
           this.getAlbumTracks(albumId);
          
          //if coming from spotify's featured playlists
         } else if (params['albumOrPlaylist'] === 'playlist'){
 
           const id = params['albumId'];
+          this.playlistUrl = `playlist/${id}`;
           
           if(params['ownerId']){
+            this.playlistUrl = `playlist/${id}/${params["ownerId"]}`
             return this.getOwnerPlaylist(id, params['ownerId'])
           }
           this.getPlaylistTracks(id);
@@ -85,7 +89,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
           this.musicPlayer.imageUrl.next(this.playlistArray[index].image);
           this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
-
+          this.musicPlayer.playlistUrl.next(this.playlistUrl);
         }
 
       });

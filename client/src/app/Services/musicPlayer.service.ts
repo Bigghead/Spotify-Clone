@@ -7,6 +7,7 @@ export class MusicPlayerService{
     musicUrl     = new ReplaySubject<string>();
     currentTrack = new ReplaySubject<any>();
     imageUrl     = new ReplaySubject<any>();
+    playlistUrl  = new ReplaySubject<any>();
     currentIndex = new ReplaySubject<any>();
 
     currentPlaylist = [];
@@ -29,7 +30,6 @@ export class MusicPlayerService{
            this.imageUrl.next(currentlyPlaying.image);
 
            this.currentlyPlayingIndex ++;
-           this.currentIndex.next(this.currentlyPlayingIndex);
        }
 
    }
