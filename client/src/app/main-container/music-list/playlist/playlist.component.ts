@@ -24,6 +24,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   currentIndex;
   audio;
   currentlyPlaying;
+  paramsSub;
 
   artistPlaylist: boolean = false;
 
@@ -34,7 +35,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
     this.getActiveTrack();
 
-    this.currentRoute.params.subscribe(
+    this.paramsSub = this.currentRoute.params.subscribe(
       (params) => {
 
         //if coming for an artist's searched tracks
@@ -68,6 +69,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
 
     if(this.currentlyPlaying){this.currentlyPlaying.unsubscribe();}
+    this.paramsSub.unsubscribe();
   }
 
 
@@ -98,7 +100,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
             res => {
 
               this.tracks = res.items;
-              console.log(this.tracks);
 
               this.playlistArray = res.items.filter(track => track.preview_url != null)
                 .map(track => {
@@ -123,7 +124,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
             res => {
 
               this.tracks = res.items.map(track => track.track);
-              console.log(this.tracks);
               
               this.playlistArray = this.tracks.filter(track => track.preview_url != null)
                 .map(track => {
@@ -148,7 +148,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
             res => {
 
               this.tracks = res.items.map(track => track.track);
-              console.log(this.tracks);
               
               this.playlistArray = this.tracks.filter(track => track.preview_url != null)
                 .map(track => {
@@ -174,7 +173,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
                             this.tracks = res.tracks.items.filter(track => {
                               return track.preview_url != null;
                             });
-                            console.log(this.tracks)
 
                             this.playlistArray = this.tracks.filter(track => track.preview_url != null)
                              .map(track => {
@@ -200,7 +198,16 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
 
    this.currentlyPlaying =  this.musicPlayer.currentIndex
-                    .subscribe( res => this.currentIndex = res)
+                    .subscribe( res => {
+                      // this.currentIndex = res
+                      for(let i = this.currentIndex; i < this.tracks.length; i ++){
+                          if( this.tracks[i + 1] && this.tracks[i + 1].preview_url != null){
+                           this.currentIndex = i + 1;
+                           break;
+                        }
+                      }
+                    })
+
  }
 
 
