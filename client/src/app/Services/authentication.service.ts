@@ -25,7 +25,8 @@ export class AuthService{
     }
 
     isLoggedIn(){
-        return localStorage.id_token != null;
+         const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+        return localStorage.id_token != null && new Date().getTime() < expiresAt;
     }
 
     getToken(){
