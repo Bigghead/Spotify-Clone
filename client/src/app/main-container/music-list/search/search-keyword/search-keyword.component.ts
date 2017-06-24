@@ -1,22 +1,25 @@
+import { SearchService } from './../../../../Services/search.service';
 import { Subject } from 'rxjs/Subject';
 import { SpotData } from './../../../../Services/spotifyData.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-search-artist',
   templateUrl: './search-keyword.component.html',
   styleUrls: ['./search-keyword.component.css']
 })
-export class SearchKeywordComponent implements OnInit {
+export class SearchKeywordComponent implements OnInit, OnDestroy {
 
   constructor(private currentRoute: ActivatedRoute, 
               private spotData: SpotData, 
-              private router: Router) { }
+              private router: Router, 
+              private search: SearchService) { }
 
 
   results; 
   searchType: string;
+  paramsSub;
 
   ngOnInit() {
 
@@ -26,7 +29,7 @@ export class SearchKeywordComponent implements OnInit {
       'playlist': 'playlists'
     }
 
-     this.currentRoute.params
+     this.paramsSub = this.currentRoute.params
                      .subscribe(
                        (params) => {
                          
@@ -34,6 +37,7 @@ export class SearchKeywordComponent implements OnInit {
                          const type = params['searchType'];
 
                          this.searchType = type;
+                         this.search.searchTerm = term;
 
                          this.spotData.getTracks(`https://api.spotify.com/v1/search?q=${term}&type=${type}`)
                              .subscribe(
@@ -63,6 +67,11 @@ export class SearchKeywordComponent implements OnInit {
   getArtist(id: string){
 
     this.router.navigate(['/search', 'artist', id])
+  }
+
+  ngOnDestroy(){
+
+    this.paramsSub.unsubscribe();
   }
 
 }

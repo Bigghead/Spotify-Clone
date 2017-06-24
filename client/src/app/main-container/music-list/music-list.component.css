@@ -22,6 +22,6 @@
 
 
 
-/*.tabs.indicator {
-	background-color:#009BAD !important;
-}*/
+.tabs.indicator {
+	color:#009BAD !important;
+}

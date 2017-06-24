@@ -57,4 +57,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/search', term , 'artist'])
   }
 
+
+  logOut(){
+
+    this.authService.removeToken();
+    this.router.navigate(['/'])
+  }
+
 }

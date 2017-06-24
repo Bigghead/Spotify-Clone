@@ -16,18 +16,12 @@ export class MusicListComponent implements OnInit {
   constructor(private authService: AuthService, private spotData: SpotData) { }
 
 
-  hasLoggedIn: boolean = false;
+
   isActive: string = 'New';
   
 
   ngOnInit() {
 
-    this.authService.user
-                    .subscribe(
-
-                      res => {
-                        this.hasLoggedIn = res;
-                      })
 
   }
 

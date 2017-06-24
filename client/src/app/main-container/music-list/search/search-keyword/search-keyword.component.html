@@ -1,7 +1,7 @@
 <div class="row" >
   <div class="col l4 m6 s6" *ngFor='let data of results'>
     <!--<ng-container *ngIf='data.images'>-->
-    <a [routerLink]="['/searchType', data.id]"*ngIf='searchType !== "artist" && !data.owner' 
+    <a *ngIf='searchType !== "artist" && !data.owner' 
       (click)="getTracks(data.images[0].url, data.id)">
       <div class="card">
         <div class="card-image">
@@ -20,7 +20,7 @@
 
     <a *ngIf="searchType !== 'artist' && data.owner"
       (click)="getPlaylistTracks(data.images[0].url, data.owner.id, data.id)"
-      [routerLink]="['/searchType', data.owner.id, data.id]">
+      >
       <div class="card">
         <div class="card-image">
           <img src="{{ data.images[0].url }}" class='responsive-img'>

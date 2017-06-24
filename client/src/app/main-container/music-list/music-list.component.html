@@ -3,13 +3,13 @@
     <div class="col s12">
       <ul class="tabs tabs-fixed-width music-tabs">
         <li class="tab col s3">
-          <a [routerLink]="['/browse/new-releases']" (click)="makeActive('New')" [ngStyle]="{ active : isActive === 'New' }">New Releases</a>
+          <a [routerLink]="['/browse/new-releases']" routerLinkActive="active">New Releases</a>
         </li>
         <li class="tab col s3">
-          <a [routerLink]="['/browse/featured']" (click)="makeActive('Featured')" [ngStyle]="{ active : isActive === 'Featured' }">Featured</a>
+          <a [routerLink]="['/browse/featured']" routerLinkActive="active">Featured</a>
         </li>
         <li class="tab col s3">
-          <a [routerLink]="['/browse/moods']" (click)="makeActive('Moods')" [ngStyle]="{ active : isActive === 'Moods' }">Moods</a>
+          <a [routerLink]="['/browse/moods']" routerLinkActive="active">Moods</a>
         </li>
       </ul>
     </div>
