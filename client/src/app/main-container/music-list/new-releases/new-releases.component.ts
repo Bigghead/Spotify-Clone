@@ -33,7 +33,6 @@ export class NewReleasesComponent implements OnInit {
 
                         this.spotData.getNewReleases()
                             .subscribe(res => {
-                              console.log(res);
                               this.albums = res.albums.items.filter( album => album.images.length > 0);
                               this.spotData.newReleased = this.albums;
                             })

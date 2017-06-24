@@ -54,7 +54,8 @@ export class HeaderComponent implements OnInit {
     const term = this.searchForm.value.searchTerm;
     this.searchService.searchTerm = (term);
     this.searchService.activeSearchTab.next('Artists');
-    this.router.navigate(['/search', term , 'artist'])
+    this.router.navigate(['/search', term , 'artist']);
+    this.searchForm.reset();
   }
 
 

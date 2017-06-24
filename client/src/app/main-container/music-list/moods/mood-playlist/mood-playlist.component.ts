@@ -31,7 +31,6 @@ export class MoodPlaylistComponent implements OnInit {
                                       .subscribe(
                                         res => {
                                           this.results = res.playlists.items;
-                                          console.log(this.results);
                                         })
                        }
                      )
