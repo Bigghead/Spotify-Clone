@@ -22,15 +22,15 @@ export class HeaderComponent implements OnInit {
                private searchService: SearchService) { }
 
 
-  user;
+  // user;
   searchForm
 
 
   ngOnInit() {
 
-    this.authService.user.subscribe(
-      (res) => this.user = res
-    )
+    // this.authService.user.subscribe(
+    //   (res) => this.user = res
+    // )
     this.initForm();
   }
 

@@ -1,4 +1,4 @@
-<div class="music-list" *ngIf='hasLoggedIn'>
+<div class="music-list" *ngIf='this.authService.isLoggedIn()'>
   <div class="row">
     <div class="col s12">
       <ul class="tabs tabs-fixed-width music-tabs">

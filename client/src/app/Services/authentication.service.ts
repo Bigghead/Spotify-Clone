@@ -20,11 +20,20 @@ export class AuthService{
     setToken(token: string){
 
         this.token = token;
-        this.user.next(true);
+        // this.user.next(true);
+        localStorage.setItem('id_token', this.token)
     }
 
     isLoggedIn(){
-        return this.successfulLogin;
+        return localStorage.id_token != null;
+    }
+
+    getToken(){
+        return localStorage.getItem('id_token');
+    }
+
+    removeToken(){
+        return localStorage.removeItem('id_token')
     }
 
 

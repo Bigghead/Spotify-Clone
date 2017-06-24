@@ -24,8 +24,8 @@
 
       <div class="col s4">
         <ul id="nav-mobile" class="right ">
-          <li *ngIf='!user'><a (click)="logIn()">Log In</a></li>
-          <li *ngIf='user'><a >Welcome</a></li>          
+          <li *ngIf='!this.authService.isLoggedIn()'><a (click)="logIn()">Log In</a></li>
+          <li *ngIf='this.authService.isLoggedIn()'><a >Welcome</a></li>          
         </ul>
       </div>
     </div>

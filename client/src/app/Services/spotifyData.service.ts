@@ -10,16 +10,19 @@ import { Subject } from 'rxjs/Subject';
 
 export class SpotData{
 
-    constructor(private http: Http, private authService: AuthService, private router: Router){}
+    constructor(private http: Http, private authService: AuthService, private router: Router){
+        console.log(this.authService.getToken())
+    }
 
     featured: any[];
     newReleased: any[];
     moods: any[];
     imageUrl;
+    token = this.authService.getToken();
 
     header = new RequestOptions({
         headers: new Headers({
-            Authorization: 'Bearer ' + this.authService.token
+            Authorization: 'Bearer ' + this.token
         })
     })
 
@@ -30,6 +33,8 @@ export class SpotData{
                  .map(res => res.json())
                  .catch(err => {
                      console.log(err);
+                     this.authService.removeToken();
+                     this.router.navigate(['/'])
                     return Observable.throw(err);
                  })
     }
@@ -41,6 +46,8 @@ export class SpotData{
                  .map(res => res.json())
                  .catch(err => {
                      console.log(err);
+                     this.authService.removeToken();
+                     this.router.navigate(['/'])
                     return Observable.throw(err);
                  })
     
@@ -51,7 +58,11 @@ export class SpotData{
 
          return this.http.get('https://api.spotify.com/v1/browse/categories', this.header)
                   .map(res => res.json())
-                  .catch(err => Observable.throw(err))
+                  .catch(err => {
+                      this.authService.removeToken();
+                      this.router.navigate(['/'])
+                     return  Observable.throw(err)
+                  })
 
      }
 
