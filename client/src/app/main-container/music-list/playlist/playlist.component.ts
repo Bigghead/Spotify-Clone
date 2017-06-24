@@ -73,7 +73,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
 
     if(this.currentlyPlaying){this.currentlyPlaying.unsubscribe();}
-    this.paramsSub.unsubscribe();
+    // this.paramsSub.unsubscribe();
   }
 
 

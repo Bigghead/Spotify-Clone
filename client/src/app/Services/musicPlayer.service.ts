@@ -28,6 +28,7 @@ export class MusicPlayerService{
 
            this.musicUrl.next(currentlyPlaying.preview);
            this.imageUrl.next(currentlyPlaying.image);
+           this.currentIndex.next('hi');
 
            this.currentlyPlayingIndex ++;
        }

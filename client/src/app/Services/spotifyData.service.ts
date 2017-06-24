@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './authentication.service';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core'
@@ -9,7 +10,7 @@ import { Subject } from 'rxjs/Subject';
 
 export class SpotData{
 
-    constructor(private http: Http, private authService: AuthService){}
+    constructor(private http: Http, private authService: AuthService, private router: Router){}
 
     featured: any[];
     newReleased: any[];
@@ -61,6 +62,7 @@ export class SpotData{
                          .map(res => res.json())
                          .catch(err => {
                              this.authService.successfulLogin = false;
+                             this.router.navigate(['/'])
                              return Observable.throw(err)
                          })
      }

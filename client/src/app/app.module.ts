@@ -43,13 +43,15 @@ const appRoutes: Routes = [
         ]
       },
 
-      { path: 'view/:mood',canActivate: [AuthGuard],  component: MoodPlaylistComponent },
-      { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },     
-      { path: 'search', component: SearchComponent ,canActivate: [AuthGuard] , children: [
-        { path: ':searchTerm/track/:artist' ,component: PlaylistComponent },        
-        { path: ':searchTerm/:searchType' ,component: SearchKeywordComponent }
-      ]}, 
-      { path: ':albumOrPlaylist/:albumId/:ownerId', canActivate: [AuthGuard], component: PlaylistComponent },  
+      { path: 'view/:mood', canActivate: [AuthGuard], component: MoodPlaylistComponent },
+      {
+        path: 'search', component: SearchComponent, canActivate: [AuthGuard], children: [
+          { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },
+          { path: ':searchTerm/track/:artist', component: PlaylistComponent },
+          { path: ':searchTerm/:searchType', component: SearchKeywordComponent }
+        ]
+      },
+      { path: ':albumOrPlaylist/:albumId/:ownerId', canActivate: [AuthGuard], component: PlaylistComponent },
       { path: ':albumOrPlaylist/:albumId', canActivate: [AuthGuard], component: PlaylistComponent }
       // { path: ':playlist/:albumId', component: PlaylistComponent },
 
