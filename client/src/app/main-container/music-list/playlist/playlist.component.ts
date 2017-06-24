@@ -73,7 +73,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
 
     if(this.currentlyPlaying){this.currentlyPlaying.unsubscribe();}
-    if(this.paramsSub){ this.paramsSub.unsubscribe(); }
+    this.paramsSub.unsubscribe(); 
   }
 
 
@@ -204,11 +204,13 @@ export class PlaylistComponent implements OnInit, OnDestroy {
    this.currentlyPlaying =  this.musicPlayer.currentIndex
                     .subscribe( res => {
                       // this.currentIndex = res
-                      for(let i = this.currentIndex; i < this.tracks.length; i ++){
+                      if(this.tracks){
+                         for(let i = this.currentIndex; i < this.tracks.length; i ++){
                           if( this.tracks[i + 1] && this.tracks[i + 1].preview_url != null){
                            this.currentIndex = i + 1;
                            break;
                         }
+                      }
                       }
                     })
 
