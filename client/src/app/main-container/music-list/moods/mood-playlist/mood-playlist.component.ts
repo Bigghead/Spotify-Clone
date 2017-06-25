@@ -39,7 +39,6 @@ export class MoodPlaylistComponent implements OnInit {
 
    getPlaylistData(id: string, imageUrl: string){
   
-    this.spotData.imageUrl = imageUrl;
     this.router.navigate(['/playlist/', id]);
 }
 

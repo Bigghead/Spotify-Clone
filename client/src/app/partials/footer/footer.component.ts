@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MusicPlayerService } from './../../Services/musicPlayer.service';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private musicPlayer: MusicPlayerService) { }
+  constructor(private musicPlayer: MusicPlayerService, private router: Router) { }
 
 
   audio;
@@ -26,7 +27,6 @@ export class FooterComponent implements OnInit {
 
     this.audio = document.querySelector('#audio');
     this.audio.onended = () => {
-      this.musicPlayer.playListIndex ++;
       this.clearSong();
       this.playNext();
     }
@@ -96,13 +96,13 @@ export class FooterComponent implements OnInit {
   playNext(){
 
     this.musicPlayer.playNext();
-    this.musicPlayer.playListIndex ++;
   }
 
   playPrev(){
 
     this.musicPlayer.playPrev();
   }
+
 
   
 

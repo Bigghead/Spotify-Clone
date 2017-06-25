@@ -32,6 +32,7 @@ export class MusicPlayerService{
            this.currentIndex.next('hi');
 
            this.currentlyPlayingIndex ++;
+           this.playListIndex ++ ;
        }
 
    }

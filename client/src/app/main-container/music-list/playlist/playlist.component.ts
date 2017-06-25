@@ -1,8 +1,10 @@
+import { Observable } from 'rxjs/Observable';
 import { MusicPlayerService } from './../../../Services/musicPlayer.service';
 import { SpotData } from './../../../Services/spotifyData.service';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import 'rxjs/add/operator/zip';
 
 @Component({
   selector: 'app-playlist',
@@ -12,14 +14,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class PlaylistComponent implements OnInit, OnDestroy {
 
   constructor(private currentRoute: ActivatedRoute,
-    private http: Http,
-    private spotData: SpotData,
-    private musicPlayer: MusicPlayerService) { }
+              private http: Http,
+              private spotData: SpotData,
+              private musicPlayer: MusicPlayerService) { }
 
 
   imageUrl: string;
   playlistUrl: string;
-  tracks;
+  tracks: any[];
   musicData;
   playlistArray;
   currentIndex;
@@ -40,9 +42,8 @@ export class PlaylistComponent implements OnInit, OnDestroy {
     this.paramsSub = this.currentRoute.params.subscribe(
       (params) => {
 
-        console.log(params);
+        //if coming from clicking on footer playlist to go back to current playing playlist
         if(params['currentIndex']){
-          console.log('hi')
           this.currentIndex = this.musicPlayer.playListIndex;
         }
 
@@ -67,10 +68,11 @@ export class PlaylistComponent implements OnInit, OnDestroy {
           this.playlistUrl = `playlist/${id}`;
           
           if(params['ownerId']){
-            this.playlistUrl = `playlist/${id}/${params["ownerId"]}`
-            return this.getOwnerPlaylist(id, params['ownerId'])
+            this.playlistUrl = `playlist/${id}/${params["ownerId"]}`;
+            const ownerId = params['ownerId'];
+            return this.getPlaylistTracks(id, `https://api.spotify.com/v1/users/${ownerId}/playlists/${id}`, `https://api.spotify.com/v1/users/${ownerId}/playlists/${id}/tracks?market=US`)
           }
-          this.getPlaylistTracks(id);
+          this.getPlaylistTracks(id, `https://api.spotify.com/v1/users/spotify/playlists/${id}`, `https://api.spotify.com/v1/users/spotify/playlists/${id}/tracks?market=US`);
         }
       }
     )
@@ -82,7 +84,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
     if(this.currentlyPlaying){this.currentlyPlaying.unsubscribe();}
     this.paramsSub.unsubscribe(); 
   }
-
 
 
   playTrack(id: string, i:number) {
@@ -107,74 +108,55 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
   getAlbumTracks(id: string){
 
-     this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}/tracks?market=US`)
-            .subscribe(
-            res => {
+    let albumData   = this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}`);
+    let albumTracks = this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}/tracks?market=US`);
 
-              this.tracks = res.items;
+    return Observable.zip(albumData, albumTracks)
+                     .subscribe(results => {
+                       this.imageUrl = results[0].images[0].url;
 
-              this.playlistArray = res.items.filter(track => track.preview_url != null)
-                .map(track => {
-                  return {
-                    id: track.id,
-                    preview: track.preview_url,
-                    image: this.imageUrl
-                  }
-                })
+                        this.tracks = results[1].items;
+
+                        this.playlistArray = results[1].items
+                                                       .filter(track => track.preview_url != null)
+                                                       .map(track => {
+                                                             return {
+                                                              id: track.id,
+                                                              preview: track.preview_url,
+                                                              image: this.imageUrl
+                                                            }
+                                                         })
 
               this.musicPlayer.setPlaylist(this.playlistArray);
-
-            }
-            )
+                     })
   }
 
 
-  getPlaylistTracks(id: string){
+  getPlaylistTracks(id: string, url1, url2){
     //spotify:user:1238319959:playlist:7tVcSv0g7RxVcYcOhNwsgP
-     this.spotData.getTracks(`https://api.spotify.com/v1/users/spotify/playlists/${id}/tracks?market=US`)
-            .subscribe(
-            res => {
-
-              this.tracks = res.items.map(track => track.track);
+   
+      let playlistData  = this.spotData.getTracks(url1);
+      let playlistTracks = this.spotData.getTracks(url2);
+      
+      return Observable.zip(playlistData, playlistTracks)
+                       .subscribe( results => {
+                         
+                         this.imageUrl = results[0].images[0].url;
+                         
+                         this.tracks = results[1].items.map(track => track.track);
               
-              this.playlistArray = this.tracks.filter(track => track.preview_url != null)
-                .map(track => {
-                  return {
-                    id: track.id,
-                    preview: track.preview_url,
-                    image: track.album.images[0].url
-                  }
-                })
+                         this.playlistArray = this.tracks.filter(track => track.preview_url != null)
+                                                         .map(track => {
+                                                             return {
+                                                               id: track.id,
+                                                               preview: track.preview_url,
+                                                               image: track.album.images[0].url
+                                                              }
+                                                          })
 
-              this.musicPlayer.setPlaylist(this.playlistArray);
-
-            }
-            )
-  }
-
-
-  getOwnerPlaylist(playlistId, ownerId){
-
-     this.spotData.getTracks(`https://api.spotify.com/v1/users/${ownerId}/playlists/${playlistId}/tracks?market=US`)
-            .subscribe(
-            res => {
-
-              this.tracks = res.items.map(track => track.track);
-              
-              this.playlistArray = this.tracks.filter(track => track.preview_url != null)
-                .map(track => {
-                  return {
-                    id: track.id,
-                    preview: track.preview_url,
-                    image: track.album.images[0].url
-                  }
-                })
-
-              this.musicPlayer.setPlaylist(this.playlistArray);
-
-            }
-            )
-  }
+                        this.musicPlayer.setPlaylist(this.playlistArray);
+                       })
+}
 
 
   getArtistTracks(term: string){
