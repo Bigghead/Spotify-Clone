@@ -11,6 +11,7 @@ export class MusicPlayerService{
     currentIndex = new ReplaySubject<any>();
 
     currentPlaylist = [];
+    playListIndex : number ;
     currentlyPlayingIndex;
 
 

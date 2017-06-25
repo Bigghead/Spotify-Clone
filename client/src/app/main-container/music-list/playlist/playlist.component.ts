@@ -31,6 +31,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+    
 
     this.imageUrl = this.spotData.imageUrl;
 
@@ -38,6 +39,12 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
     this.paramsSub = this.currentRoute.params.subscribe(
       (params) => {
+
+        console.log(params);
+        if(params['currentIndex']){
+          console.log('hi')
+          this.currentIndex = this.musicPlayer.playListIndex;
+        }
 
         //if coming for an artist's searched tracks
         if(params['artist']){ 
@@ -90,6 +97,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
           this.musicPlayer.imageUrl.next(this.playlistArray[index].image);
           this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
           this.musicPlayer.playlistUrl.next(this.playlistUrl);
+          this.musicPlayer.playListIndex = this.currentIndex;
         }
 
       });
@@ -208,6 +216,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
                          for(let i = this.currentIndex; i < this.tracks.length; i ++){
                           if( this.tracks[i + 1] && this.tracks[i + 1].preview_url != null){
                            this.currentIndex = i + 1;
+                           this.musicPlayer.playListIndex = this.currentIndex;
                            break;
                         }
                       }

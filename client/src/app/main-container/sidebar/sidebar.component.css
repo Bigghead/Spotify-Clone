@@ -1,0 +1,15 @@
+.side-bar{
+    background-color: lightgrey;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+}
+
+.side-bar-list{
+    margin-top: 50px;
+}
+
+hr{
+    width: 80%;
+}

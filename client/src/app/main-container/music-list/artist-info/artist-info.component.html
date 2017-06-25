@@ -26,10 +26,14 @@
     </div>
   </div>-->
 
+  <div>
+    <h2>Artist Info Goes Here</h2>
+  </div>
+
   <h3>Albums</h3>
   <div class="row">
-    <div class="col l4 m6 s12" *ngFor="let album of artistAlbums">
-      <div class="card">
+    <div class="col l4 m6 s12" *ngFor="let album of artistAlbums; let i = index">
+      <div class="card" *ngIf='i <= 2'>
           <div class="card-image">
             <img src="{{ album.images[0].url }}" class="">
             

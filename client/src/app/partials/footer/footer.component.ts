@@ -26,6 +26,7 @@ export class FooterComponent implements OnInit {
 
     this.audio = document.querySelector('#audio');
     this.audio.onended = () => {
+      this.musicPlayer.playListIndex ++;
       this.clearSong();
       this.playNext();
     }
@@ -95,6 +96,7 @@ export class FooterComponent implements OnInit {
   playNext(){
 
     this.musicPlayer.playNext();
+    this.musicPlayer.playListIndex ++;
   }
 
   playPrev(){
