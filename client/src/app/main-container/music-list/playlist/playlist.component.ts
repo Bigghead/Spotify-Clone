@@ -35,7 +35,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   ngOnInit() {
     
 
-    this.imageUrl = this.spotData.imageUrl;
+    // this.imageUrl = this.spotData.imageUrl;
 
     this.getActiveTrack();
 
@@ -44,13 +44,14 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
         //if coming from clicking on footer playlist to go back to current playing playlist
         if(params['currentIndex']){
-          this.currentIndex = this.musicPlayer.playListIndex;
+          this.currentIndex = this.musicPlayer.playlistIndex;
         }
 
         //if coming for an artist's searched tracks
         if(params['artist']){ 
           this.artistPlaylist = true;
           const term = params['searchTerm'];
+          this.playlistUrl = `search/${term}/track/artist/`;
           return this.getArtistTracks(term);
          }
 
@@ -89,6 +90,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   playTrack(id: string, i:number) {
 
     this.currentIndex = i;
+    this.musicPlayer.setPlaylist(this.playlistArray);    
     this.playlistArray.forEach((track, index) => {
 
         if (track.id === id) {
@@ -98,7 +100,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
           this.musicPlayer.imageUrl.next(this.playlistArray[index].image);
           this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
           this.musicPlayer.playlistUrl.next(this.playlistUrl);
-          this.musicPlayer.playListIndex = this.currentIndex;
+          this.musicPlayer.playlistIndex = this.currentIndex;
         }
 
       });
@@ -127,7 +129,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
                                                             }
                                                          })
 
-              this.musicPlayer.setPlaylist(this.playlistArray);
                      })
   }
 
@@ -154,7 +155,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
                                                               }
                                                           })
 
-                        this.musicPlayer.setPlaylist(this.playlistArray);
                        })
 }
 
@@ -177,7 +177,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
                               }
                             })
 
-                        this.musicPlayer.setPlaylist(this.playlistArray);
        })
   }
 
@@ -198,7 +197,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
                          for(let i = this.currentIndex; i < this.tracks.length; i ++){
                           if( this.tracks[i + 1] && this.tracks[i + 1].preview_url != null){
                            this.currentIndex = i + 1;
-                           this.musicPlayer.playListIndex = this.currentIndex;
+                           this.musicPlayer.playlistIndex = this.currentIndex;
                            break;
                         }
                       }

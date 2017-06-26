@@ -48,6 +48,7 @@ const appRoutes: Routes = [
         path: 'search', component: SearchComponent, canActivate: [AuthGuard], children: [
           { path: 'artist/:artistId', canActivate: [AuthGuard], component: ArtistInfoComponent },
           { path: ':searchTerm/track/:artist', component: PlaylistComponent },
+          { path: ':searchTerm/track/:artist/index/:currentIndex', component: PlaylistComponent },          
           { path: ':searchTerm/:searchType', component: SearchKeywordComponent }
         ]
       },
