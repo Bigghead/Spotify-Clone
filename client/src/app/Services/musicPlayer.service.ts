@@ -8,7 +8,8 @@ export class MusicPlayerService{
     currentTrack = new ReplaySubject<any>();
     imageUrl     = new ReplaySubject<any>();
     playlistUrl  = new ReplaySubject<any>();
-    currentIndex = new ReplaySubject<any>();
+    nextIndex    = new ReplaySubject<any>();
+    prevIndex    = new ReplaySubject<any>();    
 
     currentPlaylist = [];
     playlistIndex : number ;
@@ -31,23 +32,24 @@ export class MusicPlayerService{
 
            this.musicUrl.next(currentlyPlaying.preview);
            this.imageUrl.next(currentlyPlaying.image);
-           this.currentIndex.next('hi');
+           this.nextIndex.next('hi');
 
            this.currentlyPlayingIndex ++;
        }
-        // this.playlistIndex += 1 ;
-        console.log(this.playlistIndex);
    }
 
 
    playPrev(){
+
+       this.playlistIndex -= 1;
 
         if(this.currentlyPlayingIndex > 0){
 
             const currentlyPlaying = this.currentPlaylist[this.currentlyPlayingIndex - 1];
 
             this.musicUrl.next(currentlyPlaying.preview);
-            this.imageUrl.next(currentlyPlaying.image)
+            this.imageUrl.next(currentlyPlaying.image);
+            this.prevIndex.next('hi');
 
             this.currentlyPlayingIndex --;
         }

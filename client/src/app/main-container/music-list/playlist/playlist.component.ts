@@ -26,16 +26,16 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   playlistArray;
   currentIndex;
   audio;
-  currentlyPlaying;
+
+  //Subs
+  nextIndex;
+  prevIndex
   paramsSub;
 
   artistPlaylist: boolean = false;
 
 
   ngOnInit() {
-    
-
-    // this.imageUrl = this.spotData.imageUrl;
 
     this.getActiveTrack();
 
@@ -49,9 +49,8 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
         //if coming for an artist's searched tracks
         if(params['artist']){ 
-          this.artistPlaylist = true;
+        
           const term = params['searchTerm'];
-          this.playlistUrl = `search/${term}/track/artist/`;
           return this.getArtistTracks(term);
          }
 
@@ -59,7 +58,6 @@ export class PlaylistComponent implements OnInit, OnDestroy {
         if (params['albumOrPlaylist'] === 'album') {
 
           const albumId = params['albumId'];
-          this.playlistUrl = `album/${albumId}`;
           this.getAlbumTracks(albumId);
          
          //if coming from spotify's featured playlists
@@ -68,10 +66,16 @@ export class PlaylistComponent implements OnInit, OnDestroy {
           const id = params['albumId'];
           this.playlistUrl = `playlist/${id}`;
           
+
+          //if playlist is made by a user
           if(params['ownerId']){
-            this.playlistUrl = `playlist/${id}/${params["ownerId"]}`;
             const ownerId = params['ownerId'];
-            return this.getPlaylistTracks(id, `https://api.spotify.com/v1/users/${ownerId}/playlists/${id}`, `https://api.spotify.com/v1/users/${ownerId}/playlists/${id}/tracks?market=US`)
+            this.playlistUrl = `playlist/${id}/${ownerId}`;            
+            return this.getPlaylistTracks(
+              id,
+              `https://api.spotify.com/v1/users/${ownerId}/playlists/${id}`, 
+              `https://api.spotify.com/v1/users/${ownerId}/playlists/${id}/tracks?market=US`)
+
           }
           this.getPlaylistTracks(id, `https://api.spotify.com/v1/users/spotify/playlists/${id}`, `https://api.spotify.com/v1/users/spotify/playlists/${id}/tracks?market=US`);
         }
@@ -82,7 +86,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
 
-    if(this.currentlyPlaying){this.currentlyPlaying.unsubscribe();}
+    if(this.nextIndex){this.nextIndex.unsubscribe();}
     this.paramsSub.unsubscribe(); 
   }
 
@@ -109,6 +113,8 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
 
   getAlbumTracks(id: string){
+
+    this.playlistUrl = `album/${id}`;
 
     let albumData   = this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}`);
     let albumTracks = this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}/tracks?market=US`);
@@ -161,6 +167,9 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
   getArtistTracks(term: string){
 
+    this.playlistUrl = `search/${term}/track/artist/`;
+    this.artistPlaylist = true;
+
      return this.spotData.getTracks(`https://api.spotify.com/v1/search?q=${term}&type=track`)
                        .subscribe(
                           res => {
@@ -190,11 +199,12 @@ export class PlaylistComponent implements OnInit, OnDestroy {
  getActiveTrack(){
 
 
-   this.currentlyPlaying =  this.musicPlayer.currentIndex
+   this.nextIndex =  this.musicPlayer.nextIndex
                     .subscribe( res => {
                       // this.currentIndex = res
                       if(this.tracks){
                          for(let i = this.currentIndex; i < this.tracks.length; i ++){
+                           console.log(this.tracks[i + 1]);
                           if( this.tracks[i + 1] && this.tracks[i + 1].preview_url != null){
                            this.currentIndex = i + 1;
                            this.musicPlayer.playlistIndex = this.currentIndex;
@@ -203,6 +213,19 @@ export class PlaylistComponent implements OnInit, OnDestroy {
                       }
                       }
                     })
+
+    this.prevIndex = this.musicPlayer.prevIndex
+                         .subscribe( res => {
+                            if(this.tracks){
+                              for(let i = this.tracks.length; i >= this.currentIndex; i --){
+                                if( this.tracks[this.currentIndex - 1] && this.tracks[this.currentIndex - 1].preview_url != null){
+                                 this.currentIndex = this.currentIndex - 1;
+                                 this.musicPlayer.playlistIndex = this.currentIndex;
+                                 break;
+                                }
+                              }
+                           }
+                         })
 
  }
 
