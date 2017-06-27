@@ -1,14 +1,14 @@
-<footer class="page-footer valign-wrapper">
+<footer class="page-footer">
 
   <div class="row">
 
     <div class="col s3" >
       <div class="row" [hidden]="!imageUrl">
-        <div class="col s4" >
+        <!--<div class="col s4" >-->
           <a [routerLink]="[playlistUrl, 'index', this.musicPlayer.playlistIndex]">
             <img src="{{ imageUrl }}" class='small-album-image responsive-img' alt="">
           </a>
-        </div>
+        <!--</div>-->
       </div>
     </div>
 

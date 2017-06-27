@@ -34,6 +34,9 @@ export class SearchKeywordComponent implements OnInit, OnDestroy {
                        (params) => {
                          
                          const term = params['searchTerm'];
+                         if(term === 'undefined'){
+                           this.router.navigate(['/browse/new-releases'])
+                         }
                          const type = params['searchType'];
 
                          this.searchType = type;
