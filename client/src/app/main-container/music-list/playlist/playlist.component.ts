@@ -95,6 +95,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
     this.currentIndex = i;
     this.musicPlayer.setPlaylist(this.playlistArray);    
+    this.musicPlayer.playlistLength = this.tracks.length; 
     this.playlistArray.forEach((track, index) => {
 
         if (track.id === id) {
@@ -201,30 +202,38 @@ export class PlaylistComponent implements OnInit, OnDestroy {
 
    this.nextIndex =  this.musicPlayer.nextIndex
                     .subscribe( res => {
-                      // this.currentIndex = res
-                      if(this.tracks){
-                         for(let i = this.currentIndex; i < this.tracks.length; i ++){
-                           console.log(this.tracks[i + 1]);
-                          if( this.tracks[i + 1] && this.tracks[i + 1].preview_url != null){
-                           this.currentIndex = i + 1;
-                           this.musicPlayer.playlistIndex = this.currentIndex;
-                           break;
+
+                        if(this.tracks){
+                          for(let i = this.currentIndex; i < this.tracks.length; i ++){
+
+                            if( this.tracks[i + 1] && this.tracks[i + 1].preview_url != null){
+
+                            this.currentIndex = i + 1;
+                            this.musicPlayer.playlistIndex = this.currentIndex;
+                            break;
+
+                           }
+
+                         }
                         }
-                      }
-                      }
                     })
 
     this.prevIndex = this.musicPlayer.prevIndex
                          .subscribe( res => {
+                           
                             if(this.tracks){
-                              for(let i = this.tracks.length; i >= this.currentIndex; i --){
+                              for(let i = this.currentIndex; i >= 0; i --){
+
                                 if( this.tracks[this.currentIndex - 1] && this.tracks[this.currentIndex - 1].preview_url != null){
+
                                  this.currentIndex = this.currentIndex - 1;
                                  this.musicPlayer.playlistIndex = this.currentIndex;
                                  break;
+
                                 }
+
                               }
-                           }
+                            }
                          })
 
  }

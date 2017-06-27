@@ -12,7 +12,8 @@ export class MusicPlayerService{
     prevIndex    = new ReplaySubject<any>();    
 
     currentPlaylist = [];
-    playlistIndex : number ;
+    playlistIndex : number;
+    playlistLength: number = 0;
     currentlyPlayingIndex;
 
 
@@ -24,7 +25,9 @@ export class MusicPlayerService{
 
    playNext(){
 
-       this.playlistIndex += 1;
+       if(this.playlistIndex < this.playlistLength - 1){
+        this.playlistIndex += 1;
+       }
 
        if(this.currentlyPlayingIndex < this.currentPlaylist.length - 1){
 
@@ -41,7 +44,9 @@ export class MusicPlayerService{
 
    playPrev(){
 
-       this.playlistIndex -= 1;
+       if(this.playlistIndex > 0){
+        this.playlistIndex += 1;
+       }
 
         if(this.currentlyPlayingIndex > 0){
 
