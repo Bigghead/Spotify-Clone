@@ -1,71 +1,99 @@
-@media only screen and (max-width: 400px) {
+@media (max-width: 400px) {
     img{
-        height: 185px;
+        height: 150px;
     }
 }
 
-@media only screen and (min-width: 400px) {
+@media (min-width: 400px) {
+    img{
+        height: 150px;
+    }
+}
+
+@media (min-width: 450px) {
+    img{
+        height: 175px;
+    }
+}
+
+@media (min-width: 500px) {
     img{
         height: 200px;
     }
 }
 
-@media only screen and (min-width: 500px) {
+@media (min-width: 550px) {
     img{
-        height: 250px;
+        height: 210px;
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media (min-width: 575px) {
     img{
-        height: 275px;
+        height: 220px;
     }
 }
 
-@media only screen and (max-width: 660px) {
-    img{
-        height: 250px;
-    }
-}
-
-@media only screen and (min-width: 661px) {
+@media (min-width: 600px) {
     img{
         height: 200px;
     }
 }
 
-@media only screen and (max-width: 760px) {
+@media (min-width: 700px) {
     img{
-        height: 200px;
+        height: 210px;
     }
 }
 
-@media only screen and (min-width: 800px) {
+@media (min-width: 800px) {
     img{
-        height: 275px;
+        height: 225px;
     }
 }
 
-@media only screen and (min-width: 1000px) and (max-width: 1024px){
+@media (min-width: 860px) {
     img{
-        height: 275px;
+        height: 235px;
     }
 }
 
-@media only screen and (min-width: 1025px) {
-    img{
-        height: 300px;
-    }
-}
-
-@media only screen and (min-width: 1092px){
+@media (min-width: 900px) {
     img{
         height: 250px;
     }
 }
 
-@media only screen and (min-width: 1200px) {
+@media (min-width: 950px) {
     img{
-        height: 300px;
+        height: 265px;
     }
 }
+
+@media (min-width: 993px) {
+    img{
+        height: 225px;
+    }
+}
+
+@media (min-width: 1125px) {
+    img{
+        height: 240px;
+    }
+}
+
+@media (min-width: 1200px) {
+    img{
+        height: 255px;
+    }
+}
+
+@media (min-width: 1300px) {
+    img{
+        height: 285px;
+    }
+}
+
+/*img{
+    height: 15em;
+}*/
