@@ -25,9 +25,9 @@ export class MusicPlayerService{
 
    playNext(){
 
-       if(this.playlistIndex < this.playlistLength - 1){
-        this.playlistIndex += 1;
-       }
+    //    if(this.playlistIndex < this.playlistLength - 1){
+    //     this.playlistIndex += 1;
+    //    }
 
        if(this.currentlyPlayingIndex < this.currentPlaylist.length - 1){
 
@@ -44,9 +44,9 @@ export class MusicPlayerService{
 
    playPrev(){
 
-       if(this.playlistIndex > 0){
-        this.playlistIndex += 1;
-       }
+    //    if(this.playlistIndex > 0){
+    //     this.playlistIndex += 1;
+    //    }
 
         if(this.currentlyPlayingIndex > 0){
 

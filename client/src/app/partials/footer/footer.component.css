@@ -1,3 +1,7 @@
+.page-footer{
+    padding-top: 5px;;
+}
+
 .material-icons{
     cursor: pointer;
 }
@@ -7,13 +11,17 @@
     margin-bottom: 0;
 }
 
+.player{
+    padding-top: 10px;
+}
+
 .info{
     display: flex;
     flex-direction: column;
 }
 
 .progress{
-    margin-top: -10px;
+    /*padding-top: 10px;*/
     background-color: #404040
 }
 
