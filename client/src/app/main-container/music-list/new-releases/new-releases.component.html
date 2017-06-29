@@ -3,9 +3,12 @@
     <div class="col m4 s6" *ngFor='let album of albums'>
       <a (click)="passAlbumData(album, album.images[0].url)">
         <div class="card">
-          <div class="card-image">
-            <img src="{{ album.images[0].url }}" class="">
+          <div class="card-image card-overlay">
             
+            <img src="{{ album.images[0].url }}" class="">
+            <div class="overlay">
+              <i class="material-icons medium">play_circle_filled</i>
+            </div>
           </div>
           <div class="card-content artist-info">
             <p class='album-name'>{{ album.name }}</p>

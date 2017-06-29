@@ -2,7 +2,6 @@ a{
     cursor: pointer;
 }
 
-
  .album-name{
      text-overflow: ellipsis;
  }

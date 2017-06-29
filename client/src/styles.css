@@ -22,6 +22,33 @@ a{
     text-overflow: ellipsis;
 }
 
+.card-overlay{
+    opacity: 1;
+    transition: 0.5s ease-in;
+    position:relative;
+}
+
+.overlay{
+    /*background: rgba(0, 0, 0, 0.8);*/
+    top: 40%;
+    left: 40%;
+    opacity: 0;
+    position: absolute;
+    transition: 0.5s ease-in;
+    
+}
+
+.card-overlay:hover{
+    opacity: 0.5;
+}
+.card-overlay:hover .overlay{
+    opacity: 1;
+}
+
+.overlay:hover{
+    transform: scale(1.3);
+}
+
 footer {
    position:fixed;
    left:0px;
@@ -34,6 +61,15 @@ footer {
 }
 .page-footer{
    background-color: #455daa;
+    
+}
+
+@media (max-width: 500px){
+    .overlay{
+        top: 35%;
+        left: 35%;
+    }
+
     
 }
 
