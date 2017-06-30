@@ -10,9 +10,7 @@ import { Subject } from 'rxjs/Subject';
 
 export class SpotData{
 
-    constructor(private http: Http, private authService: AuthService, private router: Router){
-        console.log(this.authService.getToken())
-    }
+    constructor(private http: Http, private authService: AuthService, private router: Router){}
 
     featured: any[];
     newReleased: any[];

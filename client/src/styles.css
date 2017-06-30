@@ -24,7 +24,7 @@ a{
 
 .card-overlay{
     opacity: 1;
-    transition: 0.5s ease-in;
+    transition: 0.3s ease-in;
     position:relative;
 }
 
@@ -34,7 +34,7 @@ a{
     left: 40%;
     opacity: 0;
     position: absolute;
-    transition: 0.5s ease-in;
+    transition: 0.3s ease-in;
     
 }
 

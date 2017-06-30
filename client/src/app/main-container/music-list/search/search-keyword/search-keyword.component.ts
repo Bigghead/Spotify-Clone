@@ -45,7 +45,6 @@ export class SearchKeywordComponent implements OnInit, OnDestroy {
                          this.spotData.getTracks(`https://api.spotify.com/v1/search?q=${term}&type=${type}`)
                              .subscribe(
                                res => {
-                                 console.log(res);
                                  this.results = res[resultType[type]].items
                                                    .filter(artist => artist.images.length > 0);
                                }
