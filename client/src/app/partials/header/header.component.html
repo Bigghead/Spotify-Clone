@@ -1,15 +1,54 @@
 <div class="navbar-fixed">
-<nav>
-  <div class="nav-wrapper">
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-
-    <div class="row hide-on-med-and-down">
-      <div class="col s4">
-        <a routerLink="/browse/new-releases" class="brand-logo">Spotify Clone</a>
+  <nav>
+    <div class="nav-wrapper">
+      <div class="row hide-on-med-and-up">
+        <div class="col s2">
+        <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          
+        </div>
+        <div class="col s10">
+          <form (ngSubmit)="submitForm()" [formGroup]="searchForm">
+            <div class="input-field">
+              <input formControlName="searchTerm" id="search" type="search" required class='center-align' placeholder='Search'>
+              <label class="label-icon" for="search"><i style="cursor: pointer;" class="material-icons">search</i></label>
+              <!--<i class="material-icons">close</i>-->
+            </div>
+          </form>
+        </div>
       </div>
 
-      <div class="col s4">
-        <form (ngSubmit)="submitForm()" [formGroup]="searchForm">
+
+      <div class="row hide-on-med-and-down">
+        <div class="col s4">
+          <a routerLink="/browse/new-releases" class="brand-logo">Spotify Clone</a>
+        </div>
+
+        <div class="col s4">
+          <form (ngSubmit)="submitForm()" [formGroup]="searchForm">
+            <div class="input-field">
+              <input formControlName="searchTerm" id="search" type="search" required class='center-align' placeholder='Search'>
+              <label class="label-icon" for="search"><i style="cursor: pointer;" class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+
+        <div class="col s4">
+          <ul id="nav-mobile" class="right ">
+            <li *ngIf='!this.authService.isLoggedIn(); else user'><a (click)="logIn()">Log In</a></li>
+            <ng-template #user>
+              <li><a>Welcome</a></li>
+              <li><a (click)="logOut()">Log Out</a></li>
+            </ng-template>
+          </ul>
+        </div>
+      </div>
+
+
+    </div>
+  </nav>
+
+  <!--<form (ngSubmit)="submitForm()" [formGroup]="searchForm">
         <div class="input-field">
           <input formControlName="searchTerm"
                  id="search" 
@@ -20,21 +59,5 @@
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
         </div>
-      </form>
-      </div>
-
-      <div class="col s4">
-        <ul id="nav-mobile" class="right ">
-          <li *ngIf='!this.authService.isLoggedIn(); else user'><a (click)="logIn()">Log In</a></li>
-          <ng-template #user>
-          <li ><a >Welcome</a></li>          
-          <li ><a (click)="logOut()">Log Out</a></li>                      
-          </ng-template>
-        </ul>
-      </div>
-    </div>
-
-
-  </div>
-</nav>
+      </form>-->
 </div>

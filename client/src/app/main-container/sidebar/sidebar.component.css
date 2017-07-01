@@ -15,6 +15,10 @@
     color: white;
 }
 
+li{
+    padding: 5px 0 ; 
+}
+
 hr{
     width: 80%;
 }

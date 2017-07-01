@@ -11,7 +11,7 @@
 }
 
 input[type="search"] {
-  height: 64px !important; /* or height of nav */
+  height: 64px ; /* or height of nav */
 }
 
 input[type="search"]:hover {
@@ -40,3 +40,10 @@ input{
 /*input:focus{
  width: 100%;
 }*/
+
+@media(max-width: 500px){
+    input[type="search"] {
+        height: 56px ; /* or height of nav */
+        margin-left: 0;
+    }
+}
