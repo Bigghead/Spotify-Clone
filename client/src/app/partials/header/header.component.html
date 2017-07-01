@@ -3,7 +3,7 @@
     <div class="nav-wrapper">
       <div class="row hide-on-med-and-up">
         <div class="col s2">
-        <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
           
         </div>
         <div class="col s10">
@@ -60,4 +60,17 @@
           <i class="material-icons">close</i>
         </div>
       </form>-->
+
 </div>
+
+<ul id='slide-out' class='side-nav'>
+              <li *ngIf="!this.authService.isLoggedIn() ;else mobileUser">
+                <a (click)="logIn()">Log In</a>
+              </li>
+
+            <ng-template #mobileUser>
+              <li><a>Welcome</a></li>
+              <li class="divider"></li>
+              <li><a (click)="logOut()">Log Out</a></li>
+            </ng-template>
+          </ul>

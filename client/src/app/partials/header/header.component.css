@@ -6,6 +6,10 @@
     background: #455daa;
 }
 
+.button-collapse{
+    margin: 0;
+}
+
 .input-field{
     color: white;
 }
