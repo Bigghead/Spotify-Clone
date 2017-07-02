@@ -1,4 +1,5 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MusicPlayerService } from '../../../Services/musicPlayer.service';
 import { SpotData } from './../../../Services/spotifyData.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class ArtistInfoComponent implements OnInit {
 
   constructor(private spotData: SpotData, 
-              private currentRoute: ActivatedRoute) { }
+              private currentRoute: ActivatedRoute,
+              private musicPlayer: MusicPlayerService, 
+              private router: Router) { }
 
   artistInfo;
   artistTracks: any[] = [];
@@ -82,6 +85,13 @@ export class ArtistInfoComponent implements OnInit {
                    console.log(this.artistAlbums);
                  }
                )
+  }
+
+
+  getPlaylist(image: string, id: string){
+
+    // this.musicPlayer.imageUrl.next(image);
+    this.router.navigate(['/album', id])
   }
 
 }

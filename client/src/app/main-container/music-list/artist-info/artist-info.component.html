@@ -34,25 +34,33 @@
   <h5>Albums</h5>
   <div class="row">
     <div class="col l3 m6 s12" *ngFor="let album of artistAlbums; let i = index">
-      <div class="card" *ngIf='i <= 2'>
-        <div class="card-image">
-          <img src="{{ album.images[0].url }}" class="">
+        <div class="card" *ngIf='i <= 3'>
+                <a (click)='getPlaylist(album.images[0].url, album.id)'>
 
-        </div>
-        <!--<div class="card-content artist-info">
+          <div class="card-image">
+            <img src="{{ album.images[0].url }}" class="">
+
+          </div>
+          <!--<div class="card-content artist-info">
           </div>-->
-      </div>
-      <p class='info'>{{ album.name }}</p>
-      <p class='info artist-info'>By {{ album.artists[0].name }}</p>
+          </a>
+        </div>
+        <div *ngIf='i <= 3'>
+          <a (click)='getPlaylist(album.images[0].url, album.id)' style="color: white;">
+            <p class='info'>{{ album.name }}</p>
+          </a>
+          <p class='info artist-info'>By {{ album.artists[0].name }}</p>
+        </div>
+     
     </div>
   </div>
 
 
-<br>
-<h5>Singles</h5>
-<div class="row" *ngIf='artistTracks'>
-  <div class="col l3 m6 s12" *ngFor='let track of artistTracks'>
-    <div class="card">
+  <br>
+  <h5>Singles</h5>
+  <div class="row" *ngIf='artistTracks'>
+    <div class="col l3 m6 s12" *ngFor='let track of artistTracks'>
+      <div class="card">
         <div class="card-image">
           <img src="{{ track.images[0].url }}" class="">
 
@@ -61,8 +69,8 @@
           </div>-->
       </div>
 
-  </div>
+    </div>
 
-</div>
+  </div>
 
 </div>
