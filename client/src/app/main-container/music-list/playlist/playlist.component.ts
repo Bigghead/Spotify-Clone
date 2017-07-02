@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { MusicPlayerService } from './../../../Services/musicPlayer.service';
 import { SpotData } from './../../../Services/spotifyData.service';
 import { Http } from '@angular/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/zip';
 
@@ -14,6 +14,7 @@ import 'rxjs/add/operator/zip';
 export class PlaylistComponent implements OnInit, OnDestroy {
 
   constructor(private currentRoute: ActivatedRoute,
+              private router: Router,
               private http: Http,
               private spotData: SpotData,
               private musicPlayer: MusicPlayerService) { }
@@ -51,6 +52,9 @@ export class PlaylistComponent implements OnInit, OnDestroy {
         if(params['artist']){ 
         
           const term = params['searchTerm'];
+          if(term === 'undefined'){
+            this.router.navigate(['/browse/new-releases'])
+          }
           return this.getArtistTracks(term);
          }
 

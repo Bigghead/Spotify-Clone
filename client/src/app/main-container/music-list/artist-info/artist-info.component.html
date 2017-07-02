@@ -1,6 +1,7 @@
-<div class=" center-align" *ngIf="artistInfo">
+<div class="artistPage center-align" *ngIf="artistInfo">
   <div class="">
-    <img src="{{ artistInfo.images[0].url }}" class='artist-image'alt="">
+    <!--<img src="{{ artistInfo.images[0].url }}" class='artist-image'alt="">-->
+    <p>{{ artistInfo.followers.total.toLocaleString() }} Followers</p>
     <h3>{{ artistInfo.name }}</h3>
   </div>
   <br>
@@ -30,17 +31,38 @@
     <h2>Artist Info Goes Here</h2>
   </div>
 
-  <h3>Albums</h3>
+  <h5>Albums</h5>
   <div class="row">
-    <div class="col l4 m6 s12" *ngFor="let album of artistAlbums; let i = index">
+    <div class="col l3 m6 s12" *ngFor="let album of artistAlbums; let i = index">
       <div class="card" *ngIf='i <= 2'>
-          <div class="card-image">
-            <img src="{{ album.images[0].url }}" class="">
-            
-          </div>
-          <div class="card-content artist-info">
-          </div>
+        <div class="card-image">
+          <img src="{{ album.images[0].url }}" class="">
+
+        </div>
+        <!--<div class="card-content artist-info">
+          </div>-->
+      </div>
+      <p class='info'>{{ album.name }}</p>
+      <p class='info artist-info'>By {{ album.artists[0].name }}</p>
     </div>
   </div>
+
+
+<br>
+<h5>Singles</h5>
+<div class="row" *ngIf='artistTracks'>
+  <div class="col l3 m6 s12" *ngFor='let track of artistTracks'>
+    <div class="card">
+        <div class="card-image">
+          <img src="{{ track.images[0].url }}" class="">
+
+        </div>
+        <!--<div class="card-content artist-info">
+          </div>-->
+      </div>
+
+  </div>
+
+</div>
 
 </div>

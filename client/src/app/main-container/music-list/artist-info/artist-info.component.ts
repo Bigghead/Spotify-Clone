@@ -13,7 +13,7 @@ export class ArtistInfoComponent implements OnInit {
               private currentRoute: ActivatedRoute) { }
 
   artistInfo;
-  artistTracks;
+  artistTracks: any[] = [];
   artistAlbums: any[] = [];
 
   ngOnInit() {
@@ -44,14 +44,24 @@ export class ArtistInfoComponent implements OnInit {
 
   getArtistTracks(id: string){
 
-    return this.spotData.getTracks(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`)
+    return this.spotData.getTracks(`https://api.spotify.com/v1/artists/${id}/albums?album_type=single`)
                .subscribe(
                  res => {
-                   this.artistTracks = res.tracks
-                                          .filter( track => track.preview_url != null);
-                   console.log(res);
+
+                   const filterSameSongs = {
+
+                   }
+                    res.items.forEach( single => {
+                      if(!filterSameSongs[single.name]){
+                        filterSameSongs[single.name] = 1;
+                        this.artistTracks.push(single);
+                      }
+                    })
+                   console.log(this.artistTracks);
                  }
                )
+    // return this.spotData.getTracks(`https://api.spotify.com/v1/tracks/4vb4mFvYsr2h6enhjJsq9Y`)
+    //                     .subscribe( res => console.log(res))
   }
 
 

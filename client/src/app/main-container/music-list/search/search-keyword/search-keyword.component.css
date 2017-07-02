@@ -94,6 +94,15 @@
     }
 }
 
+.info{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
 /*img{
     height: 15em;
 }*/

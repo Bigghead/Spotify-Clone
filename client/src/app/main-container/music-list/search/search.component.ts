@@ -21,9 +21,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.isActive = 'Artists';
-    this.searchService.activeSearchTab
-        .subscribe(res => this.isActive = res)
    
   }
 

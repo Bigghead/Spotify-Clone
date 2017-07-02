@@ -1,3 +1,14 @@
+.artistPage{
+    text-align: center;
+    color: white;
+}
+
 .artist-image{
     max-height: 300px;
+}
+
+.artist-info{
+    margin: 0 0 10px 0;
+    color: #fff;
+    opacity: 0.7;
 }
