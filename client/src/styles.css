@@ -13,6 +13,10 @@ body{
     padding-bottom: 75px;
 }
 
+img{
+    transition: 0.2s ease-in;
+}
+
 
 a{
     cursor: pointer;
@@ -24,7 +28,6 @@ a{
 
 .card-overlay{
     opacity: 1;
-    transition: 0.3s ease-in;
     position:relative;
 }
 

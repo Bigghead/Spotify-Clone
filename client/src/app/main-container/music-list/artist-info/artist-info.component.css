@@ -1,3 +1,14 @@
+.container{
+    background: url('https://i.scdn.co/image/ccbe7b4fef679f821988c78dbd4734471834e3d9');
+}
+
+.card-image > .artist-info-image{
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin:auto;
+}
+
 .artistPage{
     text-align: center;
     color: white;

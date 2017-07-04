@@ -1,8 +1,13 @@
 <div class="artistPage center-align" *ngIf="artistInfo">
-  <div class="">
+  <div style="margin-top: 2%;">
     <!--<img src="{{ artistInfo.images[0].url }}" class='artist-image'alt="">-->
-    <p>{{ artistInfo.followers.total.toLocaleString() }} Followers</p>
     <h3>{{ artistInfo.name }}</h3>
+    <p>{{ artistInfo.followers.total.toLocaleString() }} Followers</p>
+    <div class="card z-depth-0" style="background-color: transparent;">
+      <div class="card-image center-align">
+        <img src="{{ artistInfo.images[0].url }}" class="artist-info-image" alt="{{artistInfo.name}}">
+      </div>
+    </div>
   </div>
   <br>
 
@@ -37,9 +42,11 @@
       <div class="card" *ngIf='i <= 3'>
         <a (click)='getPlaylist(album.images[0].url, album.id)'>
 
-          <div class="card-image">
+          <div class="card-image card-overlay">
             <img src="{{ album.images[0].url }}" class="">
-
+             <div class="overlay">
+              <i class="material-icons medium">play_circle_filled</i>
+            </div>
           </div>
           <!--<div class="card-content artist-info">
           </div>-->
