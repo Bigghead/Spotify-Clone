@@ -7,9 +7,10 @@
     <router-outlet></router-outlet>
   </div>
 
-  <div class="col l9 s12" *ngIf="!this.authService.isLoggedIn()">
+  <div class="col l9 s12 greeting" *ngIf="!this.authService.isLoggedIn()">
     <!--<app-music-list></app-music-list>-->
     <h3>Please Log In With Your Spotify Account</h3>
+    <p>(Spotify makes you log in before you can use this)</p>
   </div>
 </div>
 

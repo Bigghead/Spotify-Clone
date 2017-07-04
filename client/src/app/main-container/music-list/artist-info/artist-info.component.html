@@ -38,7 +38,7 @@
 
   <h5>Albums</h5>
   <div class="row">
-    <div class="col l3 m6 s12" *ngFor="let album of artistAlbums; let i = index">
+    <div class="col l3 s6" *ngFor="let album of artistAlbums; let i = index">
       <div class="card" *ngIf='i <= 3'>
         <a (click)='getPlaylist(album.images[0].url, album.id)'>
 
@@ -66,7 +66,7 @@
   <br>
   <h5>Singles</h5>
   <div class="row" *ngIf='artistTracks'>
-    <div class="col l3 m6 s12" *ngFor='let track of artistTracks'>
+    <div class="col l3  s6" *ngFor='let track of artistTracks'>
       <div class="card">
         <a [routerLink]="['/album', track.id]">
           <div class="card-image card-overlay">
