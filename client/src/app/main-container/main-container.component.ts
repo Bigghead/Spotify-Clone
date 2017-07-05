@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainContainerComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

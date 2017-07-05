@@ -13,7 +13,7 @@ import { Component, OnInit, Injectable } from '@angular/core';
 })
 export class MusicListComponent implements OnInit {
 
-  constructor(private authService: AuthService, private spotData: SpotData) { }
+  constructor(public authService: AuthService, private spotData: SpotData) { }
 
 
 

@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private currentRoute: ActivatedRoute, 
               private router: Router, 
-              private searchService: SearchService) { }
+              public searchService: SearchService) { }
 
   
   isActive: string;

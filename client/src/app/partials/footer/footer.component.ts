@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private musicPlayer: MusicPlayerService, private router: Router) { }
+  constructor(public musicPlayer: MusicPlayerService, private router: Router) { }
 
 
   audio;
