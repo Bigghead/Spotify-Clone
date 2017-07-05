@@ -1,6 +1,4 @@
-.navbar-fixed{
-    height: 64px;
-}
+.navbar-fixed{}
 
 .nav-wrapper{
     /*background-color: #224099;*/
@@ -8,6 +6,7 @@
 /*background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);   Chrome 10-25, Safari 5.1-6 */
 /*background: linear-gradient(to right, #3f4c6b, #606c88);  W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: #455daa;
+    height: 64px;
 }
 
 .button-collapse{
@@ -50,9 +49,26 @@ input{
  width: 100%;
 }*/
 
-@media(max-width: 500px){
+/*@media(max-width: 600px){
+     input[type="search"]:focus{
+        height: 56px;
+        margin-left: 0;
+    }
+}*/
+
+@media(max-width: 600px){
+
+    .nav-wrapper{
+        height: 56px;
+    }
+    
     input[type="search"] {
-        height: 56px ; /* or height of nav */
+        height: 56px ; 
+        margin-left: 0;
+    }
+
+     input[type="search"]:focus{
+        height: 56px;
         margin-left: 0;
     }
 }
