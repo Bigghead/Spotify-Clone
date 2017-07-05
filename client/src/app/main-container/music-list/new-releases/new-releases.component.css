@@ -9,4 +9,13 @@ a{
 
 .artist-info{
     height: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (max-width: 500px){
+    .artist-info > p{
+        font-size: 12px;
+    }
 }
