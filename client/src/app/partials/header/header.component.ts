@@ -1,3 +1,4 @@
+import { MusicPlayerService } from './../../Services/musicPlayer.service';
 import { SearchService } from './../../Services/search.service';
 import { SpotData } from './../../Services/spotifyData.service';
 import { AuthService } from './../../Services/authentication.service';
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
   constructor( private router: Router, 
                private http: Http, 
                public authService: AuthService, 
-               private searchService: SearchService) { }
+               private searchService: SearchService, 
+               private musicPlayer: MusicPlayerService) { }
 
 
   // user;
@@ -62,6 +64,8 @@ export class HeaderComponent implements OnInit {
   logOut(){
 
     this.authService.removeToken();
+    this.musicPlayer.musicUrl.next(null);
+    this.musicPlayer.imageUrl.next(null);
     this.router.navigate(['/'])
   }
 

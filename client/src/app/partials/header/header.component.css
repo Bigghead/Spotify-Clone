@@ -1,3 +1,7 @@
+.navbar-fixed{
+    height: 64px;
+}
+
 .nav-wrapper{
     /*background-color: #224099;*/
       /*background: #606c88;  /* fallback for old browsers */
@@ -24,6 +28,7 @@ input[type="search"]:hover {
 
 input[type="search"]:focus { 
     background-color:#212121;
+    height: 64px;
     color: white !important;
 }
 
