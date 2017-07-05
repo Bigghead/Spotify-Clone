@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../Services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainContainerComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, 
+              private router: Router) { }
 
   ngOnInit() {
+    if(this.authService.isLoggedIn()){
+      this.router.navigate(['/browse/new-releases'])
+    }
   }
 
 }
