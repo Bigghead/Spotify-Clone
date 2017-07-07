@@ -110,6 +110,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
           this.musicPlayer.musicUrl.next(this.playlistArray[index].preview);
           this.musicPlayer.playlistUrl.next(this.playlistUrl);
           this.musicPlayer.playlistIndex = this.currentIndex;
+          
         }
 
       });
