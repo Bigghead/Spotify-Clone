@@ -21,12 +21,17 @@ export class CallbackComponent implements OnInit {
                      .subscribe(
                        (fragment) => {
                          
+                         if(fragment == null){
+                           this.router.navigate(['/'])
+                         } else {
+
                          const expiresAt = JSON.stringify((3600 * 1000) + new Date().getTime());
                          localStorage.setItem('expires_at', expiresAt);
                          let token: string = fragment.match(/^(.*?)&/)[1].replace('access_token=', '');
                          this.authService.setToken(token);
                          this.authService.successfulLogin = true;
                          this.router.navigate(['/browse/new-releases']);
+                        }
                        }
                      )
   }
