@@ -94,6 +94,30 @@
     }
 }
 
+@media (min-width: 1400px) {
+    img{
+        height: 300px;
+    }
+}
+
+@media (min-width: 1500px) {
+    img{
+        height: 325px;
+    }
+}
+
+@media (min-width: 16000px) {
+    img{
+        height: 350px;
+    }
+}
+
+@media (min-width: 1800px) {
+    img{
+        height: 385px;
+    }
+}
+
 /*img{
     height: 15em;
 }*/
