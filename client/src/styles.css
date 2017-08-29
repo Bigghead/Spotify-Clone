@@ -166,6 +166,28 @@ footer {
     
 }
 
+@media ( min-width: 1800px ){
+    .overlay{
+        top: 45%;
+        left: 45%;
+        font-size: 14px;
+    }
+}
+
+@media ( min-width: 1600px ){
+    .overlay{
+        top: 42%;
+        left: 45%;
+    }
+}
+
+@media ( min-width: 1301px ){
+    .overlay{
+        top: 42%;
+        left: 42%;
+    }
+}
+
 @media (max-width: 1300px){
     .overlay{
         top: 38%;
