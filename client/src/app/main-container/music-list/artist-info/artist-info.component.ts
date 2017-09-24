@@ -29,19 +29,18 @@ export class ArtistInfoComponent implements OnInit {
           this.getArtistTracks(artistId);
           this.getArtistAlbums(artistId);
           
-        })
+        } )
   }
 
 
   getInfo(id: string){
 
     return this.spotData.getArtistInfo(`https://api.spotify.com/v1/artists/${id}`)
-                       .subscribe(
-                         (res) => {
-                           console.log(res);
-                           this.artistInfo = res;
-                         }
-                       )
+               .subscribe(
+                 (res) => {
+                   this.artistInfo = res;
+                 }
+               )
   }
 
 
@@ -55,12 +54,11 @@ export class ArtistInfoComponent implements OnInit {
 
                    }
                     res.items.forEach( single => {
-                      if(!filterSameSongs[single.name]){
+                      if( !filterSameSongs[single.name] ){
                         filterSameSongs[single.name] = 1;
                         this.artistTracks.push(single);
                       }
-                    })
-                   console.log(this.artistTracks);
+                    } )
                  }
                )
     // return this.spotData.getTracks(`https://api.spotify.com/v1/tracks/4vb4mFvYsr2h6enhjJsq9Y`)
@@ -81,8 +79,7 @@ export class ArtistInfoComponent implements OnInit {
                        albumNames[album.name] = album.name;
                        this.artistAlbums.push(album);
                      }
-                   })
-                   console.log(this.artistAlbums);
+                   } )
                  }
                )
   }

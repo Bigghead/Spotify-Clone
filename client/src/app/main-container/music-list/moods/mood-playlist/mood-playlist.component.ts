@@ -31,14 +31,13 @@ export class MoodPlaylistComponent implements OnInit {
                                       .subscribe(
                                         res => {
                                           this.results = res.playlists.items;
-                                        })
+                                        } )
                        }
                      )
   }
 
 
-   getPlaylistData(id: string, imageUrl: string){
-  
+  getPlaylistData(id: string, imageUrl: string){
     this.router.navigate(['/playlist/', id]);
 }
 

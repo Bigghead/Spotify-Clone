@@ -30,11 +30,11 @@ export class FeaturedComponent implements OnInit {
 
     if(!this.spotData.featured){
 
-                        this.spotData.getFeatured()
-                            .subscribe(res => {
-                              this.albums = res.playlists.items;
-                              this.spotData.featured = res.playlists.items;
-                            })
+      this.spotData.getFeatured()
+          .subscribe(res => {
+            this.albums = res.playlists.items;
+            this.spotData.featured = res.playlists.items;
+          } )
   
     } else {
       this.albums = this.spotData.featured;

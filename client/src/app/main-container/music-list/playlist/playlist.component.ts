@@ -100,7 +100,8 @@ export class PlaylistComponent implements OnInit, OnDestroy {
     this.currentIndex = i;
     this.musicPlayer.setPlaylist(this.playlistArray);    
     this.musicPlayer.playlistLength = this.tracks.length; 
-    this.playlistArray.forEach((track, index) => {
+    
+    this.playlistArray.forEach( ( track, index ) => {
 
         if (track.id === id) {
 
@@ -113,7 +114,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
           
         }
 
-      });
+      } );
 
   }
 
