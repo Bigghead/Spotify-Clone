@@ -31,12 +31,12 @@ export class NewReleasesComponent implements OnInit {
 
     if(!this.spotData.newReleased){
 
-                        this.spotData.getNewReleases()
-                            .subscribe(res => {
-                              this.albums = res.albums.items.filter( album => album.images.length > 0);
-                              this.spotData.newReleased = this.albums;
-                            })
-               }  else {
+        this.spotData.getTracks('https://api.spotify.com/v1/browse/new-releases')
+            .subscribe(res => {
+              this.albums = res.albums.items.filter( album => album.images.length > 0);
+              this.spotData.newReleased = this.albums;
+            } )
+    }  else {
       this.albums = this.spotData.newReleased;
     }
 

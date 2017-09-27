@@ -30,7 +30,7 @@ export class FeaturedComponent implements OnInit {
 
     if(!this.spotData.featured){
 
-      this.spotData.getFeatured()
+      this.spotData.getTracks('https://api.spotify.com/v1/browse/featured-playlists')
           .subscribe(res => {
             this.albums = res.playlists.items;
             this.spotData.featured = res.playlists.items;

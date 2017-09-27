@@ -19,50 +19,10 @@ export class SpotData{
     token = this.authService.getToken();
 
     header = new RequestOptions({
-        headers: new Headers({
+        headers: new Headers( {
             Authorization: 'Bearer ' + this.token
-        })
-    })
-
-
-    getNewReleases(){
-
-        return this.http.get('https://api.spotify.com/v1/browse/new-releases', this.header)
-                 .map(res => res.json())
-                 .catch(err => {
-                     console.log(err);
-                     this.authService.removeToken();
-                     this.router.navigate(['/'])
-                    return Observable.throw(err);
-                 })
-    }
-
-
-    getFeatured(){
-        
-        return this.http.get('https://api.spotify.com/v1/browse/featured-playlists', this.header)
-                 .map(res => res.json())
-                 .catch(err => {
-                     console.log(err);
-                     this.authService.removeToken();
-                     this.router.navigate(['/'])
-                    return Observable.throw(err);
-                 })
-    
-     }
-
-
-     getMoods(){
-
-         return this.http.get('https://api.spotify.com/v1/browse/categories', this.header)
-                  .map(res => res.json())
-                  .catch(err => {
-                      this.authService.removeToken();
-                      this.router.navigate(['/'])
-                     return  Observable.throw(err)
-                  })
-
-     }
+        } )
+    } )
 
 
      getTracks(url: string){
@@ -70,6 +30,7 @@ export class SpotData{
          return this.http.get(url, this.header)
                          .map(res => res.json())
                          .catch(err => {
+                             this.authService.removeToken();                             
                              this.authService.successfulLogin = false;
                              this.router.navigate(['/'])
                              return Observable.throw(err)

@@ -25,7 +25,7 @@ export class MoodsComponent implements OnInit {
 
     if(!this.spotData.moods){
 
-      this.spotData.getMoods()
+      this.spotData.getTracks('https://api.spotify.com/v1/browse/categories')
           .subscribe(res => {
             this.albums = res.categories.items;
             this.spotData.moods = res.categories.items;
