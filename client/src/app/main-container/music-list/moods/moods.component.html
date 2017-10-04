@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col m4 s6" *ngFor='let album of albums'>
       <a [routerLink]="['/view/', album.id]">
-        <div class="card fade-in">
+        <div class="card">
           <div class="card-image">
             <img src="{{ album.icons[0].url }}">
             <span class="card-title">{{ album.name }}</span>

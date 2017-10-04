@@ -2,7 +2,7 @@
      <div class="row">
         <div class="col m4 s6" *ngFor='let album of albums'>
           <a (click)="getPlaylistData(album.id, album.images[0].url)">
-            <div class="card fade-in">
+            <div class="card">
             <div class="card-image card-overlay">
               <img src="{{ album.images[0].url }}">
               <div class="overlay">
