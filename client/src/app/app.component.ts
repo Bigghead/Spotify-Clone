@@ -3,7 +3,6 @@ import { Http } from '@angular/http'
 import { Keys } from '../Keys'
 import { Observable } from 'rxjs/Observable'
 import { Router } from '@angular/router'
-import 'rxjs/Rx';
 
 
 @Component({
