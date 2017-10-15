@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { MusicPlayerService } from './../../Services/musicPlayer.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/Observable/interval';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -32,26 +33,22 @@ export class FooterComponent implements OnInit {
     }
 
     this.musicPlayer.playlistUrl
-                    .subscribe(
-                      res => this.playlistUrl = res
-                    )
-
+        .subscribe( res => this.playlistUrl = res )
+        
     this.musicPlayer.musicUrl
-                    .subscribe(
-                      res => {
-                        this.musicUrl = res;
+        .subscribe(
+          res => {
+            this.musicUrl = res;
                         
-                        setTimeout( () => {
-                          this.clearSong();
-                          this.playSong();
-                        })
-                      }
-                    )
+            setTimeout( () => {
+              this.clearSong();
+              this.playSong();
+            } )
+          }
+        )
 
     this.musicPlayer.imageUrl
-                    .subscribe(
-                      res => this.imageUrl = res
-                    )
+        .subscribe( res => this.imageUrl = res )
    
   }
 

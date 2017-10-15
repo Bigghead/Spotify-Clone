@@ -179,8 +179,8 @@ export class PlaylistComponent implements OnInit, OnDestroy {
     let albumData   = this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}`);
     let albumTracks = this.spotData.getTracks(`https://api.spotify.com/v1/albums/${id}/tracks?market=US`);
 
-    return Observable.zip(albumData, albumTracks)
-                     .subscribe(results => {
+    return Observable.zip( albumData, albumTracks )
+                     .subscribe( results => {
                         this.imageUrl = results[0]['images'][0].url;
 
                         this.tracks = results[1]['items'];
