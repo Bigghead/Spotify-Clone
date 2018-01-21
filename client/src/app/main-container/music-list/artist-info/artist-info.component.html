@@ -38,27 +38,29 @@
   <br><br>
 
   <h5>Albums</h5>
-  <div class="row">
-    <div class="col l3 s6" *ngFor="let album of artistAlbums; let i = index">
-      <div class="card" *ngIf='i <= 3'>
-        <a (click)='getPlaylist(album.images[0].url, album.id)'>
-
-          <div class="card-image card-overlay">
-            <img src="{{ album.images[0].url }}" class="">
-             <div class="overlay">
-              <i class="material-icons medium">play_circle_filled</i>
+  <div class="album-container">
+    <div class="album-container-child" *ngFor="let album of artistAlbums; let i = index">
+      <ng-container *ngIf="i <= 3">
+        <div class="card" >
+          <a (click)='getPlaylist(album.images[0].url, album.id)'>
+  
+            <div class="card-image card-overlay">
+              <img src="{{ album.images[0].url }}" class="">
+               <div class="overlay">
+                <i class="material-icons medium">play_circle_filled</i>
+              </div>
             </div>
-          </div>
-          <!--<div class="card-content artist-info">
-          </div>-->
-        </a>
-      </div>
-      <div *ngIf='i <= 3'>
-        <a (click)='getPlaylist(album.images[0].url, album.id)' style="color: white;">
-          <p class='info'>{{ album.name }}</p>
-        </a>
-        <p class='info artist-info'>By {{ album.artists[0].name }}</p>
-      </div>
+            <!--<div class="card-content artist-info">
+            </div>-->
+          </a>
+        </div>
+        <div >
+          <a (click)='getPlaylist(album.images[0].url, album.id)' style="color: white;">
+            <p class='info'>{{ album.name }}</p>
+          </a>
+          <p class='info artist-info'>By {{ album.artists[0].name }}</p>
+        </div>
+      </ng-container>
 
     </div>
   </div>

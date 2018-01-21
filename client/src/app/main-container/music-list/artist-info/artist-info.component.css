@@ -23,3 +23,21 @@
     color: #fff;
     opacity: 0.7;
 }
+
+.album-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.album-container-child{
+    width: 30%;
+    margin: 5px;
+}
+
+@media (max-width: 1093px) {
+    .album-container-child{
+        width: 45%;
+        margin: 5px;
+    }
+}

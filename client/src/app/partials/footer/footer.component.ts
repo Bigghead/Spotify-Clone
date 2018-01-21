@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { MusicPlayerService } from './../../Services/musicPlayer.service';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/Observable/interval';
+import 'rxjs/add/observable/interval';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -60,14 +60,14 @@ export class FooterComponent implements OnInit {
     }
     
     this.audio.play()
-              .then(() => {
-                 this.progress = Observable.interval(300)
-                               .subscribe(
-                                 res => this.progressBar += 1
-                               )
-                 this.playing = true;
-              })
-              .catch(err => console.log(err));
+        .then( () => {
+            this.progress = Observable.interval(300)
+                                      .subscribe(
+                                        res => this.progressBar += 1
+                                      )
+            this.playing = true;
+        } )
+        .catchS(err => console.log(err));
    
   }
 
