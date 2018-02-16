@@ -53,7 +53,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   nextButtonSub(){
 
     this.musicPlayer.nextIndex
-        .takeUntil( this.ngUnsubscribe )
+        // .takeUntil( this.ngUnsubscribe )
         .subscribe( res => {
 
             if( this.tracks ){
@@ -76,7 +76,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   prevButtonSub(){
 
     this.musicPlayer.prevIndex
-        .takeUntil( this.ngUnsubscribe )
+        // .takeUntil( this.ngUnsubscribe )
         .subscribe( res => {
                             
           if( this.tracks ){
