@@ -1,7 +1,7 @@
 <div class="music-list" *ngIf='this.authService.isLoggedIn()'>
   <div class="row">
     <div class="col s12">
-      <ul class="tabs tabs-fixed-width music-tabs">
+      <ul class="tabs tabs-fixed-width music-tabs" style="overflow-x: hidden;">
         <li class="tab col s3">
           <a [routerLink]="['/browse/new-releases']" routerLinkActive="active">New Releases</a>
         </li>
@@ -11,7 +11,7 @@
         <li class="tab col s3">
           <a [routerLink]="['/browse/moods']" routerLinkActive="active">Moods</a>
         </li>
-        <div class="indicator  green accent-3" style="z-index:1"></div>
+        <div class="indicator  green accent-3" style="z-index:1;"></div>
       </ul>
     </div>
 

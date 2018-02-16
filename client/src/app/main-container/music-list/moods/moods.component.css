@@ -1,0 +1,9 @@
+.mood-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.no-margin{
+    margin: 0
+}

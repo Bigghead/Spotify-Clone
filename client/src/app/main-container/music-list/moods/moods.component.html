@@ -1,6 +1,6 @@
 <div id="test3" class="col s12">
-  <div class="row">
-    <div class="col m4 s6" *ngFor='let album of albums'>
+  <div class="row mood-container">
+    <div class="col m4 s6" style="margin: 0;" *ngFor='let album of albums'>
       <a [routerLink]="['/view/', album.id]">
         <div class="card">
           <div class="card-image">
