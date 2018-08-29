@@ -1,9 +1,9 @@
 <div class="artistPage center-align" *ngIf="artistInfo">
-  <div style="margin-top: 2%;">
+  <div style="margin-top: 1.5rem;">
     <!--<img src="{{ artistInfo.images[0].url }}" class='artist-image'alt="">-->
     <h3>{{ artistInfo.name }}</h3>
     <p>{{ artistInfo.followers.total.toLocaleString() }} Followers</p>
-    <div class="card z-depth-0" style="background-color: transparent;">
+    <div class="card circle-card z-depth-0" style="background-color: transparent;">
       <div class="card-image">
         <img src="{{ artistInfo.images[0].url }}" class="artist-info-image" alt="{{artistInfo.name}}">
       </div>
@@ -41,7 +41,7 @@
   <div class="album-container">
     <div class="album-container-child" *ngFor="let album of artistAlbums; let i = index">
       <ng-container *ngIf="i <= 3">
-        <div class="card" >
+        <div class="card circle-card" >
           <a (click)='getPlaylist(album.images[0].url, album.id)'>
   
             <div class="card-image card-overlay">
@@ -70,7 +70,7 @@
   <h5>Singles</h5>
   <div class="row" *ngIf='artistTracks'>
     <div class="col l3  s6" *ngFor='let track of artistTracks'>
-      <div class="card">
+      <div class="card circle-card">
         <a [routerLink]="['/album', track.id]">
           <div class="card-image card-overlay">
             <img src="{{ track.images[0].url }}" class="">

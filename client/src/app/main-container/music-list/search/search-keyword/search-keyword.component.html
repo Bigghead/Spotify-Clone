@@ -1,10 +1,10 @@
-<div class="row" >
+<div class="row" style="margin-top: 2rem">
   <div class="col m4 s6 data-container" *ngFor='let data of results'>
 
       <!--IF SPOTIFY PLAYLIST-->
     <a *ngIf='searchType !== "artist" && !data.owner' 
       (click)="getTracks(data.images[0].url, data.id)">
-      <div class="card fade-in">
+      <div class="card fade-in circle-card">
         <div class="card-image card-overlay">
           <img src="{{ data.images[0].url }}" class='responsive-img'>
           <div class="overlay">
@@ -21,7 +21,7 @@
     <a *ngIf="searchType !== 'artist' && data.owner"
       (click)="getPlaylistTracks(data.images[0].url, data.owner.id, data.id)"
       >
-      <div class="card fade-in">
+      <div class="card fade-in circle-card">
         <div class="card-image card-overlay">
           <img src="{{ data.images[0].url }}" class='responsive-img'>
           <div class="overlay">
@@ -38,7 +38,7 @@
       <!--IF ARTIST-->
        <a [routerLink]="['/search', 'artist', data.id]" 
           *ngIf="searchType === 'artist'">
-      <div class="card fade-in">
+      <div class="card fade-in circle-card">
         <div class="card-image">
           <img src="{{ data.images[0].url }}" class='responsive-img'>
           <!--<span class="card-title hide-on-small-only">{{ data.name }}</span>-->

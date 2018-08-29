@@ -101,6 +101,15 @@ a{
     cursor: pointer;
 }
 
+.circle-card {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.circle-card >.card-image > img {
+    border-radius: 100%;
+}
+
 .card-content{
     text-overflow: ellipsis;
 }
