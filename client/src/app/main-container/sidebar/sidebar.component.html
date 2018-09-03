@@ -1,14 +1,30 @@
 <div class="container side-bar">
   <ul class='side-bar-list'>
-      <li><div class="divider"></div></li>
+      <!-- <li><div class="divider"></div></li> -->
     <a href="https://open.spotify.com/browse/featured" class='side-bar-nav'target="_blank">
       <li>Powered by Spotify</li>
     </a>
     <hr>
-    <a routerLink="/browse/new-releases" class='side-bar-nav'>
-      <li>Browse</li>
+    <br>    
+    <a [routerLink]="['/browse/new-releases']" class='side-bar-nav'>
+        
+        <li class='side-bar-list-item'>
+    <i style="cursor: pointer; margin-right: 1rem;" class="material-icons">home</i><span>  Home</span></li>
     </a>
-    <hr>
+    <a [routerLink]="['/browse/featured']" class='side-bar-nav'>
+      <li class='side-bar-list-item'>
+    <i style="cursor: pointer; margin-right: 0.5rem;" class="material-icons">library_music</i>
+    Browse</li>
+    </a>
+
+    <a [routerLink]="['/browse/moods']" class='side-bar-nav'>
+        <li class='side-bar-list-item'>
+    <i style="cursor: pointer; margin-right: 0.5rem;" class="material-icons">mood</i>
+    Moods </li>
+      </a>
+
+    <!-- <h5>Recently Played:</h5> -->
+    <!-- <hr> -->
           <!--<li><div class="divider"></div></li>-->
 
 

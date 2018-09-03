@@ -3,15 +3,15 @@
     <div class="col s12">
       <ul class="tabs tabs-fixed-width music-tabs" style="overflow-x: hidden;">
         <li class="tab col s3">
-          <a [routerLink]="['/browse/new-releases']" routerLinkActive="active">New Releases</a>
+          <a [routerLink]="['/browse/new-releases']" routerLinkActive="active-tab" [routerLinkActiveOptions]="{exact: true}">New Releases</a>
         </li>
         <li class="tab col s3">
-          <a [routerLink]="['/browse/featured']" routerLinkActive="active">Featured</a>
+          <a [routerLink]="['/browse/featured']" routerLinkActive="active-tab"[routerLinkActiveOptions]="{exact: true}">Featured</a>
         </li>
         <li class="tab col s3">
-          <a [routerLink]="['/browse/moods']" routerLinkActive="active">Moods</a>
+          <a [routerLink]="['/browse/moods']" routerLinkActive="active-tab"[routerLinkActiveOptions]="{exact: true}">Moods</a>
         </li>
-        <div class="indicator  green accent-3" style="z-index:1;"></div>
+        <div class="indicator  green accent-3" style="z-index:1; position: initial;"></div>
       </ul>
     </div>
 

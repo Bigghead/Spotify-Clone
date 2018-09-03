@@ -1,63 +1,90 @@
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-      <div class="row hide-on-large-only">
-        <div class="col s2">
-          <a data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-          
-        </div>
-        <div class="col s10">
-          <form (ngSubmit)="submitForm()" [formGroup]="searchForm">
-            <div class="input-field">
-              <input formControlName="searchTerm" id="search" type="search" required class='center-align' placeholder='Search' autocomplete="off">
-              <label class="label-icon" for="search"><i style="cursor: pointer;" class="material-icons">search</i></label>
-              <!--<i class="material-icons">close</i>-->
+    <nav>
+        <div class="nav-wrapper">
+            <div class="row hide-on-large-only">
+                <div class="col s2">
+                    <a data-activates="slide-out" class="button-collapse">
+                        <i class="material-icons">menu</i>
+                    </a>
+
+                </div>
+                <div class="col s10">
+                    <form (ngSubmit)="submitForm()" [formGroup]="searchForm">
+                        <div class="input-field">
+                            <input formControlName="searchTerm" id="search" type="search" required class='center-align' placeholder='Search' autocomplete="off">
+                            <label class="label-icon" for="search">
+                                <i style="cursor: pointer;" class="material-icons">search</i>
+                            </label>
+                            <!--<i class="material-icons">close</i>-->
+                        </div>
+                    </form>
+                </div>
             </div>
-          </form>
-        </div>
-      </div>
 
 
-      <div class="row hide-on-med-and-down">
-        <div class="col s4">
-          <a routerLink="/browse/new-releases" class="brand-logo left">Spotify Clone</a>
-        </div>
+            <div class="row hide-on-med-and-down">
+                <div class="col s4">
+                    <a routerLink="/browse/new-releases" class="brand-logo left">Spotify Clone</a>
+                </div>
 
-        <div class="col s4">
-          <form (ngSubmit)="submitForm()" [formGroup]="searchForm">
-            <div class="input-field">
-              <input formControlName="searchTerm" id="search" type="search" required class='center-align' placeholder='Search' autocomplete="off">
-              <label class="label-icon" for="search"><i style="cursor: pointer;" class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
+                <div class="col s4">
+                    <form (ngSubmit)="submitForm()" [formGroup]="searchForm">
+                        <div class="input-field">
+                            <input formControlName="searchTerm" id="search" type="search" required class='center-align' placeholder='Search' autocomplete="off">
+                            <label class="label-icon" for="search">
+                                <i style="cursor: pointer;" class="material-icons">search</i>
+                            </label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col s4">
+                    <ul id="nav-mobile" class="right ">
+                        <li *ngIf='!this.authService.isLoggedIn(); else user'>
+                            <a (click)="logIn()">Log In</a>
+                        </li>
+                        <ng-template #user>
+                            <li>
+                                <a>Welcome</a>
+                            </li>
+                            <li>
+                                <a (click)="logOut()">Log Out</a>
+                            </li>
+                        </ng-template>
+                    </ul>
+                </div>
             </div>
-          </form>
+
+
         </div>
-
-        <div class="col s4">
-          <ul id="nav-mobile" class="right ">
-            <li *ngIf='!this.authService.isLoggedIn(); else user'><a (click)="logIn()">Log In</a></li>
-            <ng-template #user>
-              <li><a>Welcome</a></li>
-              <li><a (click)="logOut()">Log Out</a></li>
-            </ng-template>
-          </ul>
-        </div>
-      </div>
-
-
-    </div>
-  </nav>
+    </nav>
 
 </div>
 
 <ul id='slide-out' class='side-nav'>
-              <li *ngIf="!this.authService.isLoggedIn() ;else mobileUser">
-                <a (click)="logIn()">Log In</a>
-              </li>
+    <li *ngIf="!this.authService.isLoggedIn() ;else mobileUser">
+        <a (click)="logIn()">Log In</a>
+    </li>
 
-            <ng-template #mobileUser>
-              <li><a routerLink="/browse/new-releases">Home</a></li>
-              <li class="divider"></li>
-              <li><a (click)="logOut()">Log Out</a></li>
-            </ng-template>
-          </ul>
+    <ng-template #mobileUser>
+
+
+        <li class='side-bar-list-item'>
+            <a [routerLink]="['/browse/new-releases']" class='side-bar-nav'>Home</a>
+        </li>
+
+        <li class='side-bar-list-item'>
+            <a [routerLink]="['/browse/featured']" class='side-bar-nav'>Browse</a>
+        </li>
+
+        <li class='side-bar-list-item'>
+            <a [routerLink]="['/browse/moods']" class='side-bar-nav'>
+                Moods</a>
+        </li>
+
+        <li>
+            <a (click)="logOut()">Log Out</a>
+        </li>
+    </ng-template>
+</ul>

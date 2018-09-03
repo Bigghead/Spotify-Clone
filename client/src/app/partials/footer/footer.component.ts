@@ -67,7 +67,7 @@ export class FooterComponent implements OnInit {
                                       )
             this.playing = true;
         } )
-        .catchS(err => console.log(err));
+        .catch(err => console.log(err));
    
   }
 

@@ -8,7 +8,7 @@
 }
 
 .side-bar-list{
-    margin-top: 70px;
+    margin-top: 6rem;
     font-size: 18px;
 }
 
@@ -16,12 +16,24 @@
     padding: 15px 0;
 }
 
+.side-bar-list > a > li {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.side-bar-list-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b0afaf;
+}
+
 .side-bar-nav{
     color: white;
 }
 
 li{
-    padding: 5px 0 ; 
+    padding: 10px 0 ; 
 }
 
 hr{
